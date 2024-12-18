@@ -24,6 +24,12 @@
     }
   {%- endif -%}
 
+   {%- if section.settings.sticky_header_type != 'none' -%}
+    .content-for-layout {
+      margin-top: calc(var(--header-height) * -1);
+    }
+  {%- endif -%}
+
   {%- if section.settings.menu_type_desktop != "drawer" -%}
     @media screen and (min-width: 990px) {
       header-drawer {

@@ -1,11 +1,14 @@
-{
+
+ {
   "current": {
-    "logo_width": 90,
+    "logo": "shopify://shop_images/Group_132.png",
+    "logo_width": 70,
+    "favicon": "shopify://shop_images/Group_132.png",
     "type_header_font": "assistant_n7",
     "heading_scale": 100,
     "type_body_font": "montserrat_n4",
     "body_scale": 100,
-    "page_width": 1200,
+    "page_width": 1600,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
@@ -16,6 +19,14 @@
     "buttons_shadow_horizontal_offset": 0,
     "buttons_shadow_vertical_offset": 4,
     "buttons_shadow_blur": 5,
+    "predictive_search_enabled": true,
+    "predictive_search_show_vendor": false,
+    "predictive_search_show_price": false,
+    "currency_code_enabled": true,
+    "cart_type": "notification",
+    "show_vendor": false,
+    "show_cart_note": false,
+    "cart_drawer_collection": "",
     "variant_pills_border_thickness": 1,
     "variant_pills_border_opacity": 55,
     "variant_pills_radius": 40,
@@ -103,14 +114,6 @@
     "social_pinterest_link": "",
     "social_tumblr_link": "",
     "social_vimeo_link": "",
-    "predictive_search_enabled": true,
-    "predictive_search_show_vendor": false,
-    "predictive_search_show_price": false,
-    "currency_code_enabled": true,
-    "cart_type": "notification",
-    "show_vendor": false,
-    "show_cart_note": false,
-    "cart_drawer_collection": "",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -151,6 +154,19 @@
           "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
           "shadow": "#ffffff"
+        }
+      },
+      "header": {
+        "settings": {
+          "background": "#1759ac",
+          "secondary_background": "#ffffff",
+          "tertiary_background": "#ff7700",
+          "background_gradient": "linear-gradient(180deg, rgba(23, 89, 172, 1), rgba(23, 89, 172, 0) 10%)",
+          "text": "#ffffff",
+          "button": "#ee7623",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ee7623",
+          "shadow": "#ee7623"
         }
       }
     }
