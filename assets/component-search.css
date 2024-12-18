@@ -1,5 +1,7 @@
 .search__input.field__input {
   padding-right: 9.8rem;
+  border-bottom: 1px solid rgb(var(--color-foreground));
+  box-shadow: none;
 }
 
 .search__button {
@@ -71,4 +73,25 @@ input::-webkit-search-decoration {
 
 .template-search__results {
   position: relative;
+}
+
+.search-modal__form .field:after {
+  content: none;
+}
+
+.search-modal__content-bottom {
+  position: relative;
+}
+
+.predictive-search-wrap-button {
+  position: absolute;
+  top: 20%;
+  display: flex;
+  justify-content: flex-end;
+  max-width: 74.2rem;
+  width: 100%;
+}
+
+.search-modal__form .field__label {
+  color: rgb(var(--color-foreground));
 }

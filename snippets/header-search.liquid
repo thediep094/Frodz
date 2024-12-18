@@ -25,7 +25,7 @@
       </span>
     </summary>
     <div
-      class="search-modal modal__content gradient"
+      class="search-modal modal__content"
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'general.search.search' | t }}"
@@ -48,7 +48,7 @@
               type="search"
               name="q"
               value="{{ search.terms | escape }}"
-              placeholder="{{ 'general.search.search' | t }}"
+              placeholder="{{ 'general.search.placeholder' | t }}"
               {%- if settings.predictive_search_enabled -%}
                 role="combobox"
                 aria-expanded="false"
@@ -62,7 +62,7 @@
                 spellcheck="false"
               {%- endif -%}
             >
-            <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+            <label class="field__label" for="{{ input_id }}">{{ 'general.search.placeholder' | t }}</label>
             <input type="hidden" name="options[prefix]" value="last">
             <button
               type="reset"
@@ -75,7 +75,7 @@
             </button>
             <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
               <span class="svg-wrapper">
-                {{- 'icon-search.svg' | inline_asset_content -}}
+                {{- 'general.search.search' | t -}}
               </span>
             </button>
           </div>
@@ -93,15 +93,17 @@
         {%- else -%}
           </search-form>
         {%- endif -%}
-        <button
-          type="button"
-          class="search-modal__close-button modal__close-button link link--text focus-inset"
-          aria-label="{{ 'accessibility.close' | t }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-close.svg' | inline_asset_content -}}
-          </span>
-        </button>
+        <div class="predictive-search-wrap-button">
+          <button
+            type="button"
+            class="search-modal__close-button modal__close-button link link--text focus-inset"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-close.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   </details>
