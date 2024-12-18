@@ -117,6 +117,12 @@
         "background": {
           "label": "Background"
         },
+        "secondary_background": {
+          "label": "Secondary Background"
+        },
+        "tertiary_background": {
+          "label": "Tertiary Background"
+        },
         "background_gradient": {
           "label": "Background gradient",
           "info": "Background gradient replaces background where possible."
@@ -1100,7 +1106,7 @@
             "label": "Top center"
           },
           "options__4": {
-            "label": "Middle center"
+            "label": "Left center"
           }
         },
         "menu": {
