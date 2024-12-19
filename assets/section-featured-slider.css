@@ -1,0 +1,38 @@
+.featured-slider {
+  overflow: hidden;
+}
+
+.featured-slider__item {
+  position: relative;
+  height: 72rem;
+}
+
+.featured-slider__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(calc(-50% - var(--header-height)));
+  background-color: rgb(var(--color-button-text));
+  color: rgb(var(--color-button));
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.featured-slider__btn:hover {
+  opacity: 100%;
+}
+
+.featured-slider__btn-prev {
+  left: 10px;
+}
+
+.featured-slider__btn-next {
+  right: 10px;
+}

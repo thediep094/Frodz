@@ -2802,6 +2802,7 @@ details[open] > .header__submenu {
   .header--left-center .header__inline-menu {
     display: flex;
     justify-content: center;
+    margin-top: 0 !important;
   }
 }
 
