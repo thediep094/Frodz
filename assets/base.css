@@ -274,12 +274,12 @@ h5,
 }
 
 .hxxxl {
-  font-size: clamp(calc(var(--font-heading-scale) * 8.6rem), 14vw, calc(var(--font-heading-scale) * 8.6rem));
+  font-size: clamp(calc(var(--font-heading-scale) * 5.6rem), 14vw, calc(var(--font-heading-scale) * 8.6rem));
   line-height: 0.85;
 }
 
 .hxxxxl {
-  font-size: clamp(calc(var(--font-heading-scale) * 10.3rem), 14vw, calc(var(--font-heading-scale) * 10.3rem));
+  font-size: clamp(calc(var(--font-heading-scale) * 7.3rem), 14vw, calc(var(--font-heading-scale) * 10.3rem));
   line-height: 0.85;
 }
 
@@ -1219,6 +1219,15 @@ button.shopify-payment-button__button--unbranded {
   min-height: calc(4.5rem + var(--buttons-border-width) * 2);
 }
 
+@media screen and (max-width: 990px) {
+  .button,
+  .shopify-challenge__button,
+  .customer button,
+  button.shopify-payment-button__button--unbranded {
+    min-width: 140px;
+  }
+}
+
 .button,
 .shopify-challenge__button,
 .customer button {
@@ -1259,7 +1268,7 @@ button.shopify-payment-button__button--unbranded {
 .shopify-challenge__button:after,
 .customer button:after,
 .shopify-payment-button__button--unbranded:after {
-  content: '';
+  /* content: ''; */
   position: absolute;
   top: var(--buttons-border-width);
   right: var(--buttons-border-width);

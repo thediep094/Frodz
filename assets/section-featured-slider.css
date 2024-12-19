@@ -51,6 +51,7 @@
   right: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .featured-slider__item-content-img {
@@ -65,6 +66,11 @@
 
 .featured-slider__item-content-info {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .featured-slider__button {
@@ -106,6 +112,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
   }
 
   .featured-slider__button {
@@ -129,7 +136,6 @@
 }
 
 .featured-slider__item--line {
-  height: 100%;
   width: 4px;
   display: block !important;
   background: radial-gradient(circle, rgba(var(--color-button-text), 1) 0%, rgba(var(--color-button), 0) 100%);
