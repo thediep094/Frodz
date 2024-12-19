@@ -106,9 +106,9 @@
           "primary_button": "button",
           "on_primary_button": "button_label",
           "primary_button_border": "button",
-          "secondary_button": "background",
-          "on_secondary_button": "secondary_button_label",
-          "secondary_button_border": "secondary_button_label"
+          "secondary_button": "button_label",
+          "on_secondary_button": "button",
+          "secondary_button_border": "button_label"
         }
       }
     ]

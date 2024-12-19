@@ -1,0 +1,20 @@
+{% comment %}
+  button_label: button text
+  button_link: link if button have link
+  button_style: style of button
+  custom_class: custom class
+{% endcomment %}
+
+{%- if button_label != blank -%}
+  <a
+    {% if button_link == blank %}
+      role="link" aria-disabled="true"
+    {% else %}
+      href="{{ button_link }}"
+    {% endif %}
+    class="button {{ custom_class }}  {% if button_style == 'secondary' %} button--secondary{% else %} button--primary{% endif %}"
+    {{ block.shopify_attributes }}
+  >
+    {{ button_label | escape }}
+  </a>
+{%- endif -%}

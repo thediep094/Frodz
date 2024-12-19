@@ -8,7 +8,7 @@
           <div class="swiper-slide featured-slider__item">
             {% liquid
               assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
-              assign image_class = 'featured-slider__item--image'
+              assign image_class = 'featured-slider__item--image-background'
               assign sizes = '120vw'
               assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
               assign fetch_priority = 'auto'
@@ -30,6 +30,86 @@
                 {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
               </div>
             {% endif %}
+            <div class="featured-slider__item-content page-width">
+              <div class="featured-slider__item-content-info">
+                <h2
+                  class="banner__heading inline-richtext {{ block.settings.title_size }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.title }}
+                </h2>
+                {% if block.settings.bonus_info_number_1 != ''
+                  or block.settings.bonus_info_number_2 != ''
+                  or block.settings.bonus_info_number_3 != ''
+                %}
+                  <div class="featured-slider__item-content-bonus">
+                    {% if block.settings.bonus_info_number_1 != '' %}
+                      <div class="featured-slider__item-content-bonus--item">
+                        <h1 class="hxxl">
+                          {{ block.settings.bonus_info_number_1 }}
+                        </h1>
+
+                        <span>
+                          {{ block.settings.bonus_info_text_1 }}
+                        </span>
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.line_bonus_1 %}
+                      <div class="featured-slider__item--line"></div>
+                    {% endif %}
+
+                    {% if block.settings.bonus_info_number_2 != '' %}
+                      <div class="featured-slider__item-content-bonus--item">
+                        <h1 class="hxxl">
+                          {{ block.settings.bonus_info_number_2 }}
+                        </h1>
+
+                        <span>
+                          {{ block.settings.bonus_info_text_2 }}
+                        </span>
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.line_bonus_2 %}
+                      <div class="featured-slider__item--line"></div>
+                    {% endif %}
+
+                    {% if block.settings.bonus_info_number_3 != '' %}
+                      <div class="featured-slider__item-content-bonus--item">
+                        <h1 class="hxxl">
+                          {{ block.settings.bonus_info_number_3 }}
+                        </h1>
+
+                        <span>
+                          {{ block.settings.bonus_info_text_3 }}
+                        </span>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+
+                {% render 'button',
+                  button_label: block.settings.button_text,
+                  button_link: block.settings.button_link,
+                  button_style: block.settings.button_type,
+                  custom_class: 'featured-slider__button'
+                %}
+              </div>
+
+              <div class="featured-slider__item-content-img">
+                {{
+                  block.settings.product_image
+                  | image_url: width: 3840
+                  | image_tag:
+                    width: block.settings.image.width,
+                    height: image_height,
+                    sizes: sizes,
+                    widths: widths,
+                    fetchpriority: fetch_priority
+                }}
+              </div>
+            </div>
           </div>
       {% endcase %}
     {% endfor %}
@@ -54,10 +134,10 @@
         prevEl: '.featured-slider__btn-prev',
       },
       loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
+      // autoplay: {
+      //   delay: 10000,
+      //   disableOnInteraction: false,
+      // },
     });
   });
 </script>
@@ -83,10 +163,52 @@
           "label": "Title"
         },
         {
+          "type": "select",
+          "id": "title_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            },
+            {
+              "value": "hxl",
+              "label": "t:sections.all.heading_size.options__4.label"
+            },
+            {
+              "value": "hxxl",
+              "label": "t:sections.all.heading_size.options__5.label"
+            },
+            {
+              "value": "hxxxl",
+              "label": "HXXXL"
+            },
+            {
+              "value": "hxxxxl",
+              "label": "HXXXXL"
+            }
+          ],
+          "default": "h1",
+          "label": "t:sections.all.heading_size.label"
+        },
+        {
           "type": "text",
           "id": "button_text",
           "default": "Button Text",
           "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "default": "/",
+          "label": "Button Link"
         },
         {
           "type": "select",
@@ -103,6 +225,71 @@
           ],
           "default": "primary",
           "label": "Button Type"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "select",
+          "id": "product_image_position",
+          "options": [
+            {
+              "label": "Left",
+              "value": "left"
+            },
+            {
+              "label": "Right",
+              "value": "right"
+            }
+          ],
+          "default": "right",
+          "label": "Product image position"
+        },
+        {
+          "type": "header",
+          "content": "Bonus Info"
+        },
+        {
+          "type": "text",
+          "id": "bonus_info_text_1",
+          "label": "Bonus Info Text 1"
+        },
+        {
+          "type": "text",
+          "id": "bonus_info_number_1",
+          "label": "Bonus Info Number 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "line_bonus_1",
+          "label": "Line between 2 bonus"
+        },
+        {
+          "type": "text",
+          "id": "bonus_info_text_2",
+          "label": "Bonus Info Text 2"
+        },
+        {
+          "type": "text",
+          "id": "bonus_info_number_2",
+          "label": "Bonus Info Number 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "line_bonus_2",
+          "label": "Line between 2 bonus"
+        },
+        {
+          "type": "text",
+          "id": "bonus_info_text_3",
+          "label": "Bonus Info Text 3"
+        },
+        {
+          "type": "text",
+          "id": "bonus_info_number_3",
+          "label": "Bonus Info Number 3"
         }
       ]
     }

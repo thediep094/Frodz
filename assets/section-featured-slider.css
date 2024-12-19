@@ -4,7 +4,8 @@
 
 .featured-slider__item {
   position: relative;
-  height: 72rem;
+  max-height: 70rem;
+  height: 70rem;
 }
 
 .featured-slider__btn {
@@ -14,7 +15,7 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  transform: translateY(calc(-50% - var(--header-height)));
+  transform: translateY(calc(-50% - var(--header-height) / 2));
   background-color: rgb(var(--color-button-text));
   color: rgb(var(--color-button));
   width: 52px;
@@ -35,4 +36,101 @@
 
 .featured-slider__btn-next {
   right: 10px;
+}
+
+.featured-slider__item .featured-slider__item--image-background {
+  object-fit: cover;
+  width: 100%;
+}
+
+.featured-slider__item-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-slider__item-content-img {
+  width: 100%;
+}
+
+.featured-slider__item-content-img img {
+  width: 100%;
+  object-fit: contain;
+  height: 100%;
+}
+
+.featured-slider__item-content-info {
+  width: 100%;
+}
+
+.featured-slider__button {
+  width: fit-content;
+  margin-top: 30px;
+  height: 50px;
+}
+
+.featured-slider__item-content-bonus {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  margin-top: 20px;
+}
+
+.featured-slider__item-content-bonus--item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.featured-slider__item-content-bonus--item h1 {
+  margin: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .featured-slider__item-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .featured-slider__item-content-img {
+    width: 55%;
+  }
+
+  .featured-slider__item-content-info {
+    width: 45%;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .featured-slider__button {
+    margin-top: 50px;
+    height: 77px;
+  }
+
+  .featured-slider__item {
+    min-height: 60rem;
+    max-height: 86rem;
+    height: unset;
+  }
+  .featured-slider__item .featured-slider__item--image-background {
+    height: 100%;
+  }
+
+  .featured-slider__item-content-bonus {
+    margin: 55px 0 0 0;
+    column-gap: 60px;
+  }
+}
+
+.featured-slider__item--line {
+  height: 100%;
+  width: 4px;
+  display: block !important;
+  background: radial-gradient(circle, rgba(var(--color-button-text), 1) 0%, rgba(var(--color-button), 0) 100%);
 }
