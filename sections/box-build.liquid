@@ -1,0 +1,171 @@
+{{ 'section-box-build.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="box-build section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}"></div>
+
+{% schema %}
+{
+  "name": "Box Build",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "hxxxl",
+          "label": "HXXXL"
+        },
+        {
+          "value": "hxxxxl",
+          "label": "HXXXXL"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "default": "Default Description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "box",
+      "name": "Box",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Default Title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "default": "Default Description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "price_1",
+          "default": "120.00 QR",
+          "label": "Price 1"
+        },
+        {
+          "type": "text",
+          "id": "price_2",
+          "default": "150.00 QR",
+          "label": "Price 2"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "default": "30% OFF",
+          "label": "Badge Text"
+        }
+      ]
+    },
+    {
+      "type": "annoucement",
+      "name": "Annoucement",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "richtext",
+          "default": "<p>Shop now and  get a <b>Free delivery</b> all over Doha above 6 meals</p>",
+          "label": "Badge Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Box Build"
+    }
+  ]
+}
+{% endschema %}

@@ -130,6 +130,9 @@
         "text": {
           "label": "Text"
         },
+        "secondary_text": {
+          "label": "Secondary Text"
+        },
         "button_background": {
           "label": "Solid button background"
         },

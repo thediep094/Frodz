@@ -1,7 +1,6 @@
 .featured-slider {
   overflow: hidden;
   height: 100vh;
-  position: relative;
 }
 
 .fixed-parallax {
@@ -9,7 +8,6 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  top: 0;
 }
 
 .featured-slider__item {
@@ -150,4 +148,8 @@
   width: 4px;
   display: block !important;
   background: radial-gradient(circle, rgba(var(--color-button-text), 1) 0%, rgba(var(--color-button), 0) 100%);
+}
+
+.color-secondary-text {
+  color: rgb(var(--color-secondary-text));
 }
