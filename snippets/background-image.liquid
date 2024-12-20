@@ -1,0 +1,24 @@
+{% comment %}
+  {% render 'background-image', image: section.settings.image %}
+{% endcomment %}
+
+{% if image != blank %}
+  {% liquid
+    assign image_height = image.width | divided_by: image.aspect_ratio
+    assign image_class = 'background-image'
+    assign sizes = '120vw'
+    assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+    assign fetch_priority = 'auto'
+  %}
+  {{
+    image
+    | image_url: width: 3840
+    | image_tag:
+      width: image.width,
+      height: image_height,
+      class: image_class,
+      sizes: sizes,
+      widths: widths,
+      fetchpriority: fetch_priority
+  }}
+{% endif %}

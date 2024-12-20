@@ -12,7 +12,20 @@
     }
   }
 {%- endstyle -%}
-<div class="box-build section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}"></div>
+<div class="box-build section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  {% render 'background-image', image: section.settings.image %}
+  <div class="page-width box-build__content">
+    <div class="box-build__content-heading">
+      {% render 'heading',
+        title: section.settings.title,
+        title_size: section.settings.title_size,
+        description: section.settings.description,
+        max_width: section.settings.max_width_heading,
+        heading_align: section.settings.heading_alignment
+      -%}
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
@@ -28,6 +41,40 @@
       "type": "image_picker",
       "id": "image",
       "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "max_width_heading",
+      "min": 10,
+      "max": 100,
+      "unit": "rem",
+      "default": 50,
+      "step": 2,
+      "label": "Max Width Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "t:sections.collapsible_content.settings.heading_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
     },
     {
       "type": "text",

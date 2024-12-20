@@ -1,0 +1,30 @@
+{% comment %}
+    title: Title,
+    title_size: size of title,
+    description: description,
+    custom_class: custom_class,
+    max_width: max width heading
+    heading_align: align
+
+  {% render 'heading',
+      title: section.settings.title,
+      title_size: section.settings.title_size,
+      description: section.settings.description,
+      max_width: section.settings.max_width_heading,
+      heading_align: section.settings.heading_alignment
+    %}
+{% endcomment %}
+
+<div class="heading {{ custom_class }} heading--{{ heading_align }}" style="max-width: {{ max_width }}rem;">
+  {% if title != '' %}
+    <h2 class="heading__title {{ title_size }}">
+      {{ title }}
+    </h2>
+  {% endif %}
+
+  {% if description != '' %}
+    <p class="heading__description">
+      {{ description }}
+    </p>
+  {% endif %}
+</div>
