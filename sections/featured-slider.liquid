@@ -1,126 +1,130 @@
 {{ 'section-featured-slider.css' | asset_url | stylesheet_tag }}
 
-<div class="featured-slider swiper-container">
-  <div class="swiper-wrapper">
-    {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'slider' %}
-          <div class="swiper-slide featured-slider__item">
-            {% liquid
-              assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
-              assign image_class = 'featured-slider__item--image-background'
-              assign sizes = '120vw'
-              assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
-              assign fetch_priority = 'auto'
-            %}
-            {% if block.settings.image != blank %}
-              {{
-                block.settings.image
-                | image_url: width: 3840
-                | image_tag:
-                  width: block.settings.image.width,
-                  height: image_height,
-                  class: image_class,
-                  sizes: sizes,
-                  widths: widths,
-                  fetchpriority: fetch_priority
-              }}
-            {% else %}
-              <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-                {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              </div>
-            {% endif %}
-            <div class="featured-slider__item-content page-width">
-              <div class="featured-slider__item-content-info">
-                <h2
-                  class="banner__heading inline-richtext {{ block.settings.title_size }}"
-                  {{ block.shopify_attributes }}
-                >
-                  {{ block.settings.title }}
-                </h2>
-                {% if block.settings.bonus_info_number_1 != ''
-                  or block.settings.bonus_info_number_2 != ''
-                  or block.settings.bonus_info_number_3 != ''
+<div class="featured-slider ">
+  <div class="fixed-parallax">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'slider' %}
+              <div class="swiper-slide featured-slider__item">
+                {% liquid
+                  assign image_height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio
+                  assign image_class = 'featured-slider__item--image-background'
+                  assign sizes = '120vw'
+                  assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+                  assign fetch_priority = 'auto'
                 %}
-                  <div class="featured-slider__item-content-bonus">
-                    {% if block.settings.bonus_info_number_1 != '' %}
-                      <div class="featured-slider__item-content-bonus--item">
-                        <h1 class="hxxl">
-                          {{ block.settings.bonus_info_number_1 }}
-                        </h1>
-
-                        <span>
-                          {{ block.settings.bonus_info_text_1 }}
-                        </span>
-                      </div>
-                    {% endif %}
-
-                    {% if block.settings.line_bonus_1 %}
-                      <div class="featured-slider__item--line"></div>
-                    {% endif %}
-
-                    {% if block.settings.bonus_info_number_2 != '' %}
-                      <div class="featured-slider__item-content-bonus--item">
-                        <h1 class="hxxl">
-                          {{ block.settings.bonus_info_number_2 }}
-                        </h1>
-
-                        <span>
-                          {{ block.settings.bonus_info_text_2 }}
-                        </span>
-                      </div>
-                    {% endif %}
-
-                    {% if block.settings.line_bonus_2 %}
-                      <div class="featured-slider__item--line"></div>
-                    {% endif %}
-
-                    {% if block.settings.bonus_info_number_3 != '' %}
-                      <div class="featured-slider__item-content-bonus--item">
-                        <h1 class="hxxl">
-                          {{ block.settings.bonus_info_number_3 }}
-                        </h1>
-
-                        <span>
-                          {{ block.settings.bonus_info_text_3 }}
-                        </span>
-                      </div>
-                    {% endif %}
+                {% if block.settings.image != blank %}
+                  {{
+                    block.settings.image
+                    | image_url: width: 3840
+                    | image_tag:
+                      width: block.settings.image.width,
+                      height: image_height,
+                      class: image_class,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority
+                  }}
+                {% else %}
+                  <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+                    {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
                   </div>
                 {% endif %}
+                <div class="featured-slider__item-content page-width">
+                  <div class="featured-slider__item-content-info">
+                    <h2
+                      class="banner__heading inline-richtext {{ block.settings.title_size }}"
+                      {{ block.shopify_attributes }}
+                    >
+                      {{ block.settings.title }}
+                    </h2>
+                    {% if block.settings.bonus_info_number_1 != ''
+                      or block.settings.bonus_info_number_2 != ''
+                      or block.settings.bonus_info_number_3 != ''
+                    %}
+                      <div class="featured-slider__item-content-bonus">
+                        {% if block.settings.bonus_info_number_1 != '' %}
+                          <div class="featured-slider__item-content-bonus--item">
+                            <h1 class="hxxl">
+                              {{ block.settings.bonus_info_number_1 }}
+                            </h1>
 
-                {% render 'button',
-                  button_label: block.settings.button_text,
-                  button_link: block.settings.button_link,
-                  button_style: block.settings.button_type,
-                  custom_class: 'featured-slider__button'
-                %}
+                            <span>
+                              {{ block.settings.bonus_info_text_1 }}
+                            </span>
+                          </div>
+                        {% endif %}
+
+                        {% if block.settings.line_bonus_1 %}
+                          <div class="featured-slider__item--line"></div>
+                        {% endif %}
+
+                        {% if block.settings.bonus_info_number_2 != '' %}
+                          <div class="featured-slider__item-content-bonus--item">
+                            <h1 class="hxxl">
+                              {{ block.settings.bonus_info_number_2 }}
+                            </h1>
+
+                            <span>
+                              {{ block.settings.bonus_info_text_2 }}
+                            </span>
+                          </div>
+                        {% endif %}
+
+                        {% if block.settings.line_bonus_2 %}
+                          <div class="featured-slider__item--line"></div>
+                        {% endif %}
+
+                        {% if block.settings.bonus_info_number_3 != '' %}
+                          <div class="featured-slider__item-content-bonus--item">
+                            <h1 class="hxxl">
+                              {{ block.settings.bonus_info_number_3 }}
+                            </h1>
+
+                            <span>
+                              {{ block.settings.bonus_info_text_3 }}
+                            </span>
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% render 'button',
+                      button_label: block.settings.button_text,
+                      button_link: block.settings.button_link,
+                      button_style: block.settings.button_type,
+                      custom_class: 'featured-slider__button'
+                    %}
+                  </div>
+
+                  <div class="featured-slider__item-content-img">
+                    {{
+                      block.settings.product_image
+                      | image_url: width: 3840
+                      | image_tag:
+                        width: block.settings.image.width,
+                        height: image_height,
+                        sizes: sizes,
+                        widths: widths,
+                        fetchpriority: fetch_priority
+                    }}
+                  </div>
+                </div>
               </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
 
-              <div class="featured-slider__item-content-img">
-                {{
-                  block.settings.product_image
-                  | image_url: width: 3840
-                  | image_tag:
-                    width: block.settings.image.width,
-                    height: image_height,
-                    sizes: sizes,
-                    widths: widths,
-                    fetchpriority: fetch_priority
-                }}
-              </div>
-            </div>
-          </div>
-      {% endcase %}
-    {% endfor %}
-  </div>
-
-  <!-- Custom Navigation Buttons -->
-  <div class="featured-slider__btn featured-slider__btn-prev">
-    {{- 'icon-arrow-prev.svg' | inline_asset_content -}}
-  </div>
-  <div class="featured-slider__btn featured-slider__btn-next">
-    {{- 'icon-arrow.svg' | inline_asset_content -}}
+      <!-- Custom Navigation Buttons -->
+      <div class="featured-slider__btn featured-slider__btn-prev">
+        {{- 'icon-arrow-prev.svg' | inline_asset_content -}}
+      </div>
+      <div class="featured-slider__btn featured-slider__btn-next">
+        {{- 'icon-arrow.svg' | inline_asset_content -}}
+      </div>
+    </div>
   </div>
 </div>
 
@@ -221,6 +225,10 @@
             {
               "label": "Secondary",
               "value": "secondary"
+            },
+            {
+              "label": "Tertiary",
+              "value": "tertiary"
             }
           ],
           "default": "primary",
