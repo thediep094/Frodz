@@ -1,1 +1,65 @@
-<div class="build-box-item"></div>
+{% comment %}
+  {% render 'build-box-item',
+    image: block.settings.image,
+    title: block.settings.title,
+    description: block.settings.description,
+    price_1: block.settings.price_1,
+    price_2: block.settings.price_2,
+    badge_text: block.settings.badge_text,
+    lazy_load:  {Boolean} Image should be lazy loaded. Default: true (optional)
+    %}
+{% endcomment %}
+{%- liquid
+  assign ratio = 1
+  if media_aspect_ratio != null
+    assign ratio = media_aspect_ratio
+  endif
+-%}
+<div class="build-box-item">
+  <div class="build-box-item__inner" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+    <img
+      srcset="
+        {%- if image.src.width >= 165 -%}{{ image.src | image_url: width: 165 }} 165w,{%- endif -%}
+        {%- if image.src.width >= 360 -%}{{ image.src | image_url: width: 360 }} 360w,{%- endif -%}
+        {%- if image.src.width >= 533 -%}{{ image.src | image_url: width: 533 }} 533w,{%- endif -%}
+        {%- if image.src.width >= 720 -%}{{ image.src | image_url: width: 720 }} 720w,{%- endif -%}
+        {%- if image.src.width >= 1000 -%}{{ image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+        {%- if image.src.width >= 1500 -%}{{ image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+        {{ image.src | image_url }} {{ image.src.width }}w
+      "
+      src="{{ image.src | image_url: width: 416 }}"
+      alt="{{ image.src.alt | escape }}"
+      class="motion-reduce"
+      {% unless lazy_load == false %}
+        loading="lazy"
+      {% endunless %}
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+    >
+
+    <div class="build-box-item__content">
+      <div class="build-box-item__content--left">
+        {% if title != '' %}
+          <h2 class="build-box-item__content--left-number hxxxl margin-0">{{ title }}</h2>
+        {% endif %}
+        {% if description != '' %}
+          <p class="margin-0">{{ description }}</p>
+        {% endif %}
+      </div>
+
+      <div class="build-box-item__content--right">
+        {% if badge_text != '' %}
+          <div class="build-box-item__content-badge">
+            {{ badge_text }}
+          </div>
+        {% endif %}
+        {% if price_1 != '' or price_2 != '' %}
+          <div class="build-box-item__content-price">
+            <span>{{ price_1 }}</span>
+            <span>{{ price_2 }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -59,7 +59,11 @@
         "slider_NpyTLy",
         "slider_MLPFft"
       ],
-      "settings": {}
+      "settings": {
+        "section_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     },
     "box_build_kEAYmx": {
       "type": "box-build",
@@ -67,7 +71,7 @@
         "box_X7EpLe": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/6-Meals.png",
+            "image": "shopify://shop_images/Group_37886_ee6b4768-2ba8-4d94-84ae-86db55934cd0.png",
             "title": "6",
             "description": "Meals",
             "price_1": "120.00 QR",
@@ -105,11 +109,13 @@
       ],
       "settings": {
         "section_color_scheme": "",
-        "title": "Default Title",
-        "title_size": "h1",
-        "description": "Default Description",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "max_width_heading": 80,
+        "heading_alignment": "center",
+        "title": "BUILD YOUR BOX",
+        "title_size": "hxxl",
+        "description": "Get 10% off on Frodz’ Boxes",
+        "padding_top": 80,
+        "padding_bottom": 72
       }
     }
   },

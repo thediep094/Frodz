@@ -24,6 +24,21 @@
         heading_align: section.settings.heading_alignment
       -%}
     </div>
+    <div class="box-build__content-items">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'box' %}
+            {% render 'build-box-item',
+              image: block.settings.image,
+              title: block.settings.title,
+              description: block.settings.description,
+              price_1: block.settings.price_1,
+              price_2: block.settings.price_2,
+              badge_text: block.settings.badge_text
+            %}
+        {% endcase %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
