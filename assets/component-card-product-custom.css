@@ -1,0 +1,80 @@
+.card-product-custom {
+  position: relative;
+  padding: 37px 35px 36px;
+  background-color: rgb(var(--color-background));
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(213, 213, 213, 0.4);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(213, 213, 213, 0.4);
+  box-shadow: 0px 10px 50px 0px rgba(213, 213, 213, 0.4);
+}
+
+.card-product-custom img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 318 / 214;
+  transition: 0.6s;
+}
+
+.card-product-custom__more {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-product-custom__info .card-product-custom__info--title {
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 10px;
+  letter-spacing: -1px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.card-product-custom__add {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 30px;
+}
+
+.card-product-custom__quantity {
+  padding-top: 19px;
+  max-height: 0;
+  transition: 0.6s;
+  overflow: hidden;
+}
+
+.card-product-custom:hover .card-product-custom__quantity {
+  max-height: 100px;
+}
+
+.card-product-custom:hover img {
+  transform: rotate(10deg) scale(1.05);
+}
+
+.card-product-custom__add .quick-add__submit {
+  background: transparent;
+  border: 2px solid rgb(var(--color-button-text));
+  width: 46px;
+  height: 46px;
+  color: rgb(var(--color-button-text));
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.card-product-custom .badge--text {
+  --color-badge-color: var(--color-button);
+  --color-badge-background: var(--color-button-text);
+}
+
+.card-product-custom .badge--sold-out {
+  --color-badge-background: 185, 185, 185;
+  --color-badge-color: var(--color-background);
+}
+
+.card-product-custom .badge--sold-sale {
+  --color-badge-background: var(--color-tertiary-background);
+  --color-badge-color: var(--color-background);
+}

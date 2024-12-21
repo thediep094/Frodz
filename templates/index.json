@@ -150,11 +150,97 @@
         "padding_top": 52,
         "padding_bottom": 36
       }
+    },
+    "featured_products_QrzykP": {
+      "type": "featured-products",
+      "blocks": {
+        "product_RzNLh7": {
+          "type": "product",
+          "settings": {
+            "product": "baby-chicken",
+            "badge_text": "30% OFF"
+          }
+        },
+        "product_xJjJ9C": {
+          "type": "product",
+          "settings": {
+            "product": "baked-chicken",
+            "badge_text": ""
+          }
+        },
+        "product_ULArfA": {
+          "type": "product",
+          "settings": {
+            "product": "butter-chicken",
+            "badge_text": ""
+          }
+        },
+        "product_bNGmNn": {
+          "type": "product",
+          "settings": {
+            "product": "cashew-chicken",
+            "badge_text": ""
+          }
+        },
+        "product_RV7Ycf": {
+          "type": "product",
+          "settings": {
+            "product": "green-peas-stew",
+            "badge_text": ""
+          }
+        },
+        "product_8ja3V8": {
+          "type": "product",
+          "settings": {
+            "product": "lasagna",
+            "badge_text": ""
+          }
+        },
+        "product_GBYFDE": {
+          "type": "product",
+          "settings": {
+            "product": "maqluba",
+            "badge_text": ""
+          }
+        },
+        "product_gKBmTL": {
+          "type": "product",
+          "settings": {
+            "product": "molokhiya",
+            "badge_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_RzNLh7",
+        "product_xJjJ9C",
+        "product_ULArfA",
+        "product_bNGmNn",
+        "product_RV7Ycf",
+        "product_8ja3V8",
+        "product_GBYFDE",
+        "product_gKBmTL"
+      ],
+      "settings": {
+        "section_color_scheme": "scheme-c1e5e7cd-cfea-493d-8ae8-36b663c7d71c",
+        "products_per_row": 4,
+        "max_width_heading": 50,
+        "heading_alignment": "center",
+        "title": "OUR MENU",
+        "title_size": "h1",
+        "description": "",
+        "button_text": "View All Products",
+        "button_link": "shopify://collections/all",
+        "button_type": "tertiary",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "featured_slider_t4GKbY",
     "box_build_kEAYmx",
-    "image_with_text_VQ6wEc"
+    "image_with_text_VQ6wEc",
+    "featured_products_QrzykP"
   ]
 }

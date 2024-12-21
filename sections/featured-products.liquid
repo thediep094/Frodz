@@ -1,0 +1,252 @@
+{{ 'section-featured-products.css' | asset_url | stylesheet_tag }}
+{{ 'component-card-product-custom.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-padding .featured-products__content-items {
+        display: grid;
+        row-gap: 30px;
+        column-gap: 30px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .section-{{ section.id }}-padding .featured-products__content-items {
+        row-gap: 50px;
+        column-gap: 60px;
+        grid-template-columns: repeat({{ section.settings.products_per_row }}, minmax(0, 1fr));
+    }
+  }
+{%- endstyle -%}
+
+<div class="featured-products section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  <div class="featured-products__overlay"></div>
+  <div class="page-width featured-products__content">
+    <div class="featured-products__content__content-heading">
+      {% render 'heading',
+        title: section.settings.title,
+        title_size: section.settings.title_size,
+        description: section.settings.description,
+        max_width: section.settings.max_width_heading,
+        heading_align: section.settings.heading_alignment
+      -%}
+    </div>
+    <div class="featured-products__content-items">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'product' %}
+            {% render 'card-product-custom',
+              card_product: block.settings.product,
+              badge_text: block.settings.badge_text
+            %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+    <div class="featured-products__content-more">
+      {% render 'button',
+        button_label: section.settings.button_text,
+        button_link: section.settings.button_link,
+        button_style: section.settings.button_type,
+        custom_class: 'featured-products__button'
+      %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "min": 3,
+      "max": 5,
+      "step": 1,
+      "label": "Products per row",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "max_width_heading",
+      "min": 10,
+      "max": 100,
+      "unit": "rem",
+      "default": 50,
+      "step": 2,
+      "label": "Max Width Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "t:sections.collapsible_content.settings.heading_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "hxxxl",
+          "label": "HXXXL"
+        },
+        {
+          "value": "hxxxxl",
+          "label": "HXXXXL"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "default": "Default Description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Button Text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "/",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_type",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary"
+        },
+        {
+          "label": "Tertiary",
+          "value": "tertiary"
+        }
+      ],
+      "default": "primary",
+      "label": "Button Type"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Products",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+.featured-products {
+  position: relative;
+}
+
+.featured-products__content-items {
+  margin-top: 60px;
+}
+
+.featured-products__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featured-products__content-more {
+  margin-top: 40px;
+}
+
+.featured-products__overlay {
+  position: absolute;
+  display: block !important;
+  background: rgb(var(--color-background));
+}
+
+@media screen and (min-width: 990px) {
+  .featured-products__content-more {
+    margin-top: 80px;
+  }
+}
