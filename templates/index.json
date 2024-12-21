@@ -20,7 +20,7 @@
             "title_size": "hxxxl",
             "button_text": "SHOP NOW",
             "button_link": "/",
-            "button_type": "tertiary",
+            "button_type": "primary",
             "product_image": "shopify://shop_images/xxxUntitled-2.png",
             "product_image_position": "right",
             "bonus_info_text_1": "",
@@ -100,15 +100,32 @@
             "price_2": "150.00 QR",
             "badge_text": ""
           }
+        },
+        "annoucement_YCDh4t": {
+          "type": "annoucement",
+          "settings": {
+            "richtext": "<p>Shop now and  get a <strong>Free delivery</strong> all over Doha above 6 meals</p>",
+            "icon": "shopify://shop_images/motorbike.png"
+          }
+        },
+        "button_cFQpcR": {
+          "type": "button",
+          "settings": {
+            "button_text": "BUILD MY BOX",
+            "button_link": "shopify://collections",
+            "button_type": "tertiary"
+          }
         }
       },
       "block_order": [
         "box_X7EpLe",
         "box_wMe9mc",
-        "box_W3GznT"
+        "box_W3GznT",
+        "annoucement_YCDh4t",
+        "button_cFQpcR"
       ],
       "settings": {
-        "section_color_scheme": "",
+        "section_color_scheme": "scheme-20ca45ae-a12e-4da7-ba9f-27d9456adff0",
         "max_width_heading": 80,
         "heading_alignment": "center",
         "title": "BUILD YOUR BOX",
@@ -117,10 +134,27 @@
         "padding_top": 80,
         "padding_bottom": 72
       }
+    },
+    "image_with_text_VQ6wEc": {
+      "type": "image-with-text",
+      "settings": {
+        "show_line": true,
+        "image": "shopify://shop_images/Group_37886_8200e27b-9fb4-41b9-94eb-934815f0bbd8.png",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "max_width_heading": 38,
+        "heading_alignment": "center",
+        "title": "We Cook We Freeze!",
+        "title_size": "hxxl",
+        "description": "You heat and enjoy!",
+        "padding_top": 52,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "featured_slider_t4GKbY",
-    "box_build_kEAYmx"
+    "box_build_kEAYmx",
+    "image_with_text_VQ6wEc"
   ]
 }
