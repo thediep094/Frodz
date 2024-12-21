@@ -1,7 +1,6 @@
 .box-build {
   min-height: 60rem;
   position: relative;
-  overflow: hidden;
 }
 
 .box-build__content {
@@ -106,4 +105,22 @@
     width: 100%;
     max-width: 416px;
   }
+}
+
+.box-build__content-more {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-build-overlay {
+  top: -299px;
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  display: block !important;
+  background: rgb(var(--color-background));
+  background: rgb(23, 89, 172);
+  background: linear-gradient(0deg, rgba(23, 89, 172, 1) 0%, rgba(23, 89, 172, 1) 42%, rgba(23, 89, 172, 0) 100%);
 }

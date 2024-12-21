@@ -1,0 +1,31 @@
+.annoucement-custom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  background: rgb(var(--color-secondary-text));
+  margin-top: 20px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--color-secondary-text), 1) 0%,
+    rgba(var(--color-secondary-text), 1) 44%,
+    rgba(var(--color-background), 0) 100%
+  );
+}
+
+.annoucement-custom p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.annoucement-custom img {
+  max-height: 28px;
+}
+@media screen and (min-width: 990px) {
+  .annoucement-custom {
+    column-gap: 70px;
+    margin-top: 40px;
+  }
+}

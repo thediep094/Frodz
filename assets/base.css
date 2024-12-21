@@ -1190,11 +1190,6 @@ deferred-media {
   --color-button-text: var(--color-secondary-button-text);
 }
 
-.button--tertiary {
-  --color-button: transparent;
-  --color-button-text: var(--color-button-text);
-}
-
 .button,
 .shopify-challenge__button,
 .customer button,
@@ -3700,14 +3695,17 @@ details-disclosure > details {
 
 .heading--center {
   align-items: center;
+  text-align: center;
 }
 
 .heading--left {
   align-items: flex-start;
+  text-align: left;
 }
 
 .heading--right {
   align-items: flex-end;
+  text-align: right;
 }
 .heading__description {
   margin: 0;

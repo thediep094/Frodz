@@ -12,7 +12,7 @@
     {% else %}
       href="{{ button_link }}"
     {% endif %}
-    class="button {{ custom_class }}  {% if button_style == 'secondary' %} button--secondary{% else %} button--primary{% endif %}"
+    class="button {{ custom_class }}  button--{{button_style }}"
     {{ block.shopify_attributes }}
   >
     {{ button_label | escape }}

@@ -1,4 +1,6 @@
 {{ 'section-box-build.css' | asset_url | stylesheet_tag }}
+{{ 'component-annoucement-custom.css' | asset_url | stylesheet_tag }}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -13,6 +15,7 @@
   }
 {%- endstyle -%}
 <div class="box-build section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  <div class="box-build-overlay"></div>
   {% render 'background-image', image: section.settings.image %}
   <div class="page-width box-build__content">
     <div class="box-build__content-heading">
@@ -36,6 +39,23 @@
               price_2: block.settings.price_2,
               badge_text: block.settings.badge_text
             %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    <div class="box-build__content-more">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'button' %}
+            {% render 'button',
+              button_label: block.settings.button_text,
+              button_link: block.settings.button_link,
+              button_style: block.settings.button_type,
+              custom_class: 'featured-slider__button'
+            %}
+
+          {% when 'annoucement' %}
+            {% render 'annoucement', richtext: block.settings.richtext, icon: block.settings.icon %}
         {% endcase %}
       {% endfor %}
     </div>
@@ -220,6 +240,44 @@
           "type": "image_picker",
           "id": "icon",
           "label": "Icon"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "default": "Button Text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "default": "/",
+          "label": "Button Link"
+        },
+        {
+          "type": "select",
+          "id": "button_type",
+          "options": [
+            {
+              "label": "Primary",
+              "value": "primary"
+            },
+            {
+              "label": "Secondary",
+              "value": "secondary"
+            },
+            {
+              "label": "Tertiary",
+              "value": "tertiary"
+            }
+          ],
+          "default": "primary",
+          "label": "Button Type"
         }
       ]
     }

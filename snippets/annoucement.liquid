@@ -1,0 +1,10 @@
+{% comment %}
+  {% render 'annoucement', richtext: block.settings.richtext, icon: block.settings.icon %}
+{% endcomment %}
+
+<div class="annoucement-custom">
+  {{ richtext }}
+  {% if icon != blank %}
+    <img src="{{ icon |  image_url: width: 50 }}" width="auto" height="auto" style="object-fit: contain;">
+  {% endif %}
+</div>
