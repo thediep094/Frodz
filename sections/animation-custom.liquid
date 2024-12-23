@@ -1,0 +1,187 @@
+{{ 'section-animation-custom.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="animation-custom section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  <div class="animation-custom__left">
+    <img src="{{ section.settings.image_1 | image_url: width: 674 }}" alt="" width="674" height="789">
+  </div>
+  <div class="animation-custom__right">
+    <div class="animation-custom__float-left">
+      <div class="animation-custom__background"></div>
+      <div class="animation-custom__float-left-content">
+        {% if section.settings.title != '' %}
+          <h2 class="heading__title heading__title--title-1 {{ section.settings.title_size }}">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.title_2 != '' %}
+          <h2 class="heading__title heading__title--title-2 {{ section.settings.title_size_2  }}">
+            {{ section.settings.title_2 }}
+          </h2>
+        {% endif %}
+
+        <img
+          class="animation-custom__right-img"
+          src="{{ section.settings.image_2 | image_url: width: 674 }}"
+          alt=""
+          width="auto"
+          height="auto"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Animation Custom",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "hxxxl",
+          "label": "HXXXL"
+        },
+        {
+          "value": "hxxxxl",
+          "label": "HXXXXL"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "default": "Default Title 2",
+      "label": "Title 2"
+    },
+    {
+      "type": "select",
+      "id": "title_size_2",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "hxxxl",
+          "label": "HXXXL"
+        },
+        {
+          "value": "hxxxxl",
+          "label": "HXXXXL"
+        }
+      ],
+      "default": "h1",
+      "label": "Title size 2"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animation Custom"
+    }
+  ]
+}
+{% endschema %}

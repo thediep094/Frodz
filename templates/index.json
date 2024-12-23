@@ -235,12 +235,27 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "animation_custom_ma8hiK": {
+      "type": "animation-custom",
+      "settings": {
+        "section_color_scheme": "",
+        "image_1": "shopify://shop_images/Layer-1.png",
+        "image_2": "shopify://shop_images/Untitled-1.png",
+        "title": "LUNCH SERVED",
+        "title_size": "hxxl",
+        "title_2": "IN 7 MINUTES",
+        "title_size_2": "hxxxl",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "featured_slider_t4GKbY",
     "box_build_kEAYmx",
     "image_with_text_VQ6wEc",
-    "featured_products_QrzykP"
+    "featured_products_QrzykP",
+    "animation_custom_ma8hiK"
   ]
 }
