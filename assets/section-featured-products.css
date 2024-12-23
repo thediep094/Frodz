@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
+  position: relative;
 }
 
 .featured-products__content-more {
@@ -20,10 +22,19 @@
   position: absolute;
   display: block !important;
   background: rgb(var(--color-background));
+  clip-path: ellipse(55% 50% at 50% 50%);
+  width: 100%;
+  height: 100px;
+  top: -50px;
 }
 
 @media screen and (min-width: 990px) {
   .featured-products__content-more {
     margin-top: 80px;
+  }
+
+  .featured-products__overlay {
+    height: 200px;
+    top: -97px;
   }
 }
