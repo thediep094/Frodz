@@ -66,9 +66,9 @@
 .card-product-custom__add .quick-add__submit {
   background: transparent;
   border: 2px solid rgb(var(--color-button-text));
+  color: rgb(var(--color-button-text));
   width: 46px;
   height: 46px;
-  color: rgb(var(--color-button-text));
   border-radius: 50%;
   cursor: pointer;
   display: flex;

@@ -148,7 +148,7 @@
           "secondary_text": "#ff7700",
           "button": "#ee7623",
           "button_label": "#ffffff",
-          "secondary_button_label": "rgba(0,0,0,0)",
+          "secondary_button_label": "#ffffff",
           "shadow": "#ee7623"
         }
       },
