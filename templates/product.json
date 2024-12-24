@@ -60,7 +60,7 @@
         "background_image": "shopify://shop_images/Mask_Group_47_67d342a9-711f-4eb5-8e56-c6824f018671.png",
         "enable_sticky_info": true,
         "color_scheme": "scheme5",
-        "media_size": "small",
+        "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
