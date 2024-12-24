@@ -59,7 +59,7 @@
   }
 }
 
-.card-product-custom:hover img {
+.card-product-custom:hover .card-product-custom__image {
   transform: rotate(10deg) scale(1.05);
 }
 
@@ -71,6 +71,9 @@
   color: rgb(var(--color-button-text));
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-product-custom .badge--text {

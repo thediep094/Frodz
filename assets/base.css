@@ -2908,7 +2908,7 @@ details-disclosure > details {
   z-index: 1;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 25px;
   width: 84px;
   height: 84px;
   padding-top: 20px;

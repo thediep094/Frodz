@@ -30,9 +30,9 @@
   assign money_price_min = price_min | money
   assign money_price_max = price_max | money
   if settings.currency_code_enabled
-    assign money_price = price | money_without_currency
-    assign money_price_min = price_min | money_without_currency
-    assign money_price_max = price_max | money_without_currency
+    assign money_price = price | money_with_currency
+    assign money_price_min = price_min | money_with_currency
+    assign money_price_max = price_max | money_with_currency
   endif
 
   if target == product and product.price_varies
@@ -68,9 +68,9 @@
               <span>
                 <s class="price-item price-item--regular variant-item__old-price">
                   {% if settings.currency_code_enabled %}
-                    {{ compare_at_price | money_without_currency }} QAR
+                    {{ compare_at_price | money_without_currency }}
                   {% else %}
-                    {{ compare_at_price | money }} QAR
+                    {{ compare_at_price | money }}
                   {% endif %}
                 </s>
               </span>
@@ -85,9 +85,7 @@
           </span>
         {%- else -%}
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-          <span class="price-item price-item--regular">
-            {{ money_price }} QAR
-          </span>
+          <span class="price-item price-item--regular"> {{ money_price }} </span>
         {%- endif -%}
       </div>
       <div class="price__sale">

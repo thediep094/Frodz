@@ -28,6 +28,11 @@
   overflow: hidden;
 }
 
+.build-box-item__inner img {
+  width: 100%;
+  height: auto;
+}
+
 .build-box-item {
   width: 100%;
   position: relative;
