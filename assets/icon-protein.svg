@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg"  class="icon icon-accordion icon-protein" width="23.446" height="33.951" viewBox="0 0 23.446 33.951">
+  <g id="proteins" transform="translate(-50.9 82)">
+    <path id="Path_78154" data-name="Path 78154" d="M287.711,399.529l-2.188-.622-7.024,2v4.468l9.212-2.618a1.673,1.673,0,0,0,0-3.224Z" transform="translate(-214.59 -458.107)" fill="currentColor"/>
+    <path id="Path_78155" data-name="Path 78155" d="M279.256,253.127a3.377,3.377,0,0,1-.756-.319v3.308a1.686,1.686,0,0,0,1.225,1.612l8.456,2.4a3.376,3.376,0,0,1,.756.319v-3.308a1.686,1.686,0,0,0-1.225-1.612Z" transform="translate(-214.591 -320.358)" fill="currentColor"/>
+    <path id="Path_78156" data-name="Path 78156" d="M287.711,2.618,278.5,0V4.468l7.024,2,2.188-.622a1.673,1.673,0,0,0,0-3.224Z" transform="translate(-214.59 -82)" fill="currentColor"/>
+    <path id="Path_78157" data-name="Path 78157" d="M288.18,125.815l-8.456,2.4a1.673,1.673,0,0,0,0,3.224l2.188.622,5.8-1.648a1.686,1.686,0,0,0,1.225-1.612V125.5A3.375,3.375,0,0,1,288.18,125.815Z" transform="translate(-214.59 -200.323)" fill="currentColor"/>
+    <path id="Path_78158" data-name="Path 78158" d="M60.112,399.529l-2.188-.622-7.024,2v4.468l9.212-2.618a1.673,1.673,0,0,0,0-3.224Z" transform="translate(0 -453.42)" fill="currentColor"/>
+    <path id="Path_78159" data-name="Path 78159" d="M60.112,5.842a1.673,1.673,0,0,0,0-3.224L50.9,0V4.468l7.024,2Z" transform="translate(0 -77.313)" fill="currentColor"/>
+    <path id="Path_78160" data-name="Path 78160" d="M52.125,131.441l2.188.622,5.8-1.648a1.686,1.686,0,0,0,1.225-1.612V125.5a3.377,3.377,0,0,1-.756.319l-8.456,2.4a1.673,1.673,0,0,0,0,3.224Z" transform="translate(0 -195.635)" fill="currentColor"/>
+    <path id="Path_78161" data-name="Path 78161" d="M60.581,260.132a3.379,3.379,0,0,1,.756.319v-3.308a1.686,1.686,0,0,0-1.225-1.612l-8.456-2.4a3.379,3.379,0,0,1-.756-.319v3.308a1.686,1.686,0,0,0,1.225,1.612Z" transform="translate(0 -315.672)" fill="currentColor"/>
+  </g>
+</svg>

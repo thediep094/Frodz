@@ -225,12 +225,6 @@ product-info {
   max-width: 100%;
 }
 
-.product__info-container .product-form,
-.product__info-container .product__description,
-.product__info-container .icon-with-text {
-  margin: 2.5rem 0;
-}
-
 .product__text {
   margin-bottom: 0;
 }
@@ -1209,7 +1203,7 @@ a.product__text {
 }
 
 .product__inventory .icon-inventory-status circle:first-of-type {
-  opacity: .3;
+  opacity: 0.3;
 }
 
 /* Icon with text */
@@ -1490,5 +1484,98 @@ a.product__text {
 
   .recipient-form > input[type='checkbox']:checked + label .icon-checkmark {
     border: none;
+  }
+}
+
+/* Custom */
+
+.product__description {
+  margin: 38px 0;
+}
+
+.product__description-paragraph p {
+  margin: 10px 0 0;
+  line-height: 26px;
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.product__custom-heading {
+  display: flex;
+  flex-direction: column;
+  margin: 38px 0;
+}
+
+.product__custom-heading .product__custom-heading-des {
+  margin: 11px 0 0;
+  font-size: 20px;
+}
+
+.product__custom-metafield {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  row-gap: 10px;
+  margin-top: 35px;
+  margin-bottom: 38px;
+}
+
+.product__custom-metafield-more-items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  row-gap: 10px;
+}
+
+.product__custom-metafield-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 51px;
+  height: 51px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgb(var(--color-foreground));
+  color: rgb(var(--color-button-text));
+  margin-right: 8px;
+}
+
+.product__custom-metafield-more-item {
+  border: 2px solid rgb(var(--color-foreground));
+  color: rgb(var(--color-button-text));
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 9.4px 17px 9.8px 7.8px;
+}
+
+.product__custom-metafield-more-item .icon {
+  color: rgb(var(--color-secondary-text));
+}
+
+.product__custom-metafield-more-item-info {
+  margin-left: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__custom-metafield-more-item-title {
+  margin: 0;
+  font-size: 10px;
+  color: rgb(var(--color-secondary-text));
+}
+
+.product__custom-metafield-more-item-description {
+  margin: 0;
+  font-size: 13px;
+}
+
+@media screen and (min-width: 749px) {
+  .product__title--content {
+    font-size: 49px;
   }
 }
