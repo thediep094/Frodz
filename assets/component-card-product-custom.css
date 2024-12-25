@@ -100,3 +100,20 @@
 .product-form {
   height: 100%;
 }
+
+.grid__item {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  z-index: 0;
+}
+
+.card-product-custom--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9); /* Optional: Add a little shrink effect */
+  position: absolute; /* Ensures no space is occupied */
+  width: 0; /* Ensures no width is taken */
+  height: 0; /* Ensures no height is taken */
+  z-index: -1;
+}

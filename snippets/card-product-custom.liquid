@@ -29,32 +29,38 @@
     data-type: 'add-to-cart-form'
   -%}
     <div class="card-product-custom">
-      <div class="card-product-custom__badge">
-        {% if badge_text != '' %}
+      {% if badge_text != '' or badge_text != blank %}
+        <div class="card-product-custom__badge">
           <span
             id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
             class="badge badge--text"
           >
             {{- badge_text -}}
           </span>
-        {% else %}
-          {%- if card_product.available == false -%}
+        </div>
+
+      {% else %}
+        {%- if card_product.available == false -%}
+          <div class="card-product-custom__badge">
             <span
               id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--sold-out"
             >
               {{- 'products.product.sold_out' | t -}}
             </span>
-          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+          </div>
+
+        {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+          <div class="card-product-custom__badge">
             <span
               id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--sale"
             >
               {{- 'products.product.on_sale' | t -}}
             </span>
-          {%- endif -%}
-        {% endif %}
-      </div>
+          </div>
+        {%- endif -%}
+      {% endif %}
       <a
         href="{{ card_product.url }}"
       >

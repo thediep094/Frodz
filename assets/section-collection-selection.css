@@ -1,0 +1,44 @@
+.section-collection-selection__collection {
+  display: inline-block; /* Ensure slides take up only as much space as needed */
+  width: auto; /* Allow width to adjust based on content */
+  white-space: nowrap; /* Prevent line breaks in content */
+  cursor: pointer;
+}
+
+.section-collection-selection .page-width {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .section-collection-selection__wrapper {
+    width: 100%;
+  }
+}
+.section-collection-selection__content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.section-collection-selection__wrapper {
+  padding-bottom: 26px;
+  border-bottom: 1px solid #d0d0d0;
+  position: relative;
+}
+
+.swiper-active-line {
+  display: block !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: rgb(var(--color-secondary-button));
+  width: 0; /* Initial width */
+  transition: transform 0.3s ease, width 0.3s ease; /* Smooth animation */
+}
+
+.section-collection-selection__wrapper .swiper-slide:last-child {
+  margin-right: 0 !important;
+}

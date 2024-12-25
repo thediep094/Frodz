@@ -16,7 +16,7 @@
 
 <div class="featured-slider section-{{ section.id }}-padding">
   <div class="fixed-parallax">
-    <div class="swiper-container">
+    <div class="swiper-container swiper-container--{{section.id}}">
       <div class="swiper-wrapper">
         {% for block in section.blocks %}
           {% case block.type %}
@@ -144,7 +144,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const featuredSlider = new Swiper('.swiper-container', {
+    const featuredSlider = new Swiper('.swiper-container--{{section.id}}', {
       slidesPerView: 1,
       spaceBetween: 0,
       navigation: {

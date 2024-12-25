@@ -1,0 +1,147 @@
+{{ 'section-collection-selection.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div
+  class="section-collection-selection section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}"
+>
+  <div class="page-width">
+    <div class="section-collection-selection__content">
+      <div class="swiper-container section-collection-selection__wrapper section-collection-selection--{{ section.id }}">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'collection' %}
+                <div class="swiper-slide section-collection-selection__collection">
+                  {{ block.settings.collection }}
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+        <!-- The yellow line is part of the container -->
+        <div class="swiper-active-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiperSelector = '.section-collection-selection--{{ section.id }}';
+    const swiper = new Swiper(swiperSelector, {
+      slidesPerView: 'auto',
+      spaceBetween: 30,
+    });
+
+    const swiperContainer = document.querySelector(swiperSelector);
+    const activeLine = swiperContainer.querySelector('.swiper-active-line');
+
+    // Function to update the yellow line position and width
+    function updateActiveLine(slide) {
+      const slideRect = slide.getBoundingClientRect();
+      const containerRect = swiperContainer.getBoundingClientRect();
+
+      activeLine.style.width = `${slideRect.width}px`;
+      activeLine.style.transform = `translateX(${slideRect.left - containerRect.left}px)`;
+    }
+
+    const slides = swiperContainer.querySelectorAll('.swiper-slide');
+    const productGrid = document.querySelector('#product-grid');
+    const gridItems = productGrid.querySelectorAll('.grid__item');
+
+    slides.forEach((slide, index) => {
+      slide.addEventListener('click', function () {
+        const productType = slide.textContent.trim(); // Get the text content of the slide
+
+        // Filter logic
+        gridItems.forEach((item) => {
+          const itemType = item.getAttribute('product-type');
+          if (productType === 'All' || itemType === productType) {
+            item.classList.remove('card-product-custom--hidden'); // Show item
+          } else {
+            item.classList.add('card-product-custom--hidden'); // Hide item
+          }
+        });
+
+        // Move the Swiper to the clicked slide
+        swiper.slideTo(index);
+
+        // Update the yellow line to the clicked slide
+        updateActiveLine(slide);
+      });
+    });
+
+    // Set the initial position of the yellow line
+    const initialSlide = swiperContainer.querySelector('.swiper-slide-active');
+    if (initialSlide) {
+      updateActiveLine(initialSlide);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collection Selection",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "collection",
+          "label": "Collection Type",
+          "default": "All"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Selection"
+    }
+  ]
+}
+{% endschema %}
