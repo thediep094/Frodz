@@ -46,6 +46,12 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
+        },
+        "nutritional_VjyR9n": {
+          "type": "nutritional",
+          "settings": {
+            "color_scheme": "scheme-7"
+          }
         }
       },
       "block_order": [
@@ -54,13 +60,15 @@
         "custom_heading_4CH3Mm",
         "description",
         "variant_picker",
-        "custom_add_FdMP8L"
+        "custom_add_FdMP8L",
+        "nutritional_VjyR9n"
       ],
       "settings": {
         "background_image": "shopify://shop_images/Mask_Group_47_67d342a9-711f-4eb5-8e56-c6824f018671.png",
+        "background_image_mobile": "shopify://shop_images/Mask_Group_47_7d34ef0f-d47d-41c0-adef-5e083902a31d.png",
         "enable_sticky_info": true,
         "color_scheme": "scheme5",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",

@@ -1,0 +1,136 @@
+<div class="nutritional color-{{ color_scheme }} {{ custom_class }}">
+  <!-- Button to open the modal -->
+  <button
+    class="button button--tertiary nutritional--desktop nutritional__open-modal-btn"
+    id="open-modal-btn"
+  >
+    NUTRITIONAL FACTS
+  </button>
+
+  <button
+    class="button--link nutritional--mobile nutritional__open-modal-btn"
+    id="open-modal-btn"
+  >
+    NUTRITIONAL FACTS
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" id="nutritional-modal--{{ id }}" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="close-modal-btn--{{ id }}">X</button>
+      <div id="nutritional-details--{{ id }}" class="nutritional-details">
+        <!-- Nutritional details will be injected here dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const openModalBtn = document.querySelectorAll('.nutritional .nutritional__open-modal-btn');
+    const closeModalBtn = document.getElementById('close-modal-btn--{{id}}');
+    const modal = document.getElementById('nutritional-modal--{{ id }}');
+    const nutritionalDetails = document.getElementById('nutritional-details--{{id}}');
+    // Nutritional JSON data
+    const nutritionalData = {{ product.metafields.custom.nutritional }}
+
+    // Populate nutritional facts
+    function populateNutritionalFacts(data) {
+      nutritionalDetails.innerHTML = `
+    <div class="row"><span class="label">Serving Size:</span> <span class="value">${data.servingSize}</span></div>
+    <div class="row row--hidden-border"><span class="label">Amount per serving</span> <span class="value"></span></div>
+<div class="row">
+  <span class="label label--bigger color-secondary-text">Calories:</span>
+  <span class="value value--bigger color-secondary-text">${data.calories.value}</span>
+</div>
+<div class="row"><span class="label"></span> <span class="value">(${data.calories.dailyValuePercent})</span></div>
+<div class="row">
+  <div class="label">Total Fat:<span class="sub-label--space sub-label">${data.totalFat.value}</span></div>
+  <span class="value">${data.totalFat.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="label label--level-1">
+    <span class="sub-label">Saturated Fat: ${data.totalFat.saturatedFat.value}</span>
+  </div>
+  <span class="value">${data.totalFat.saturatedFat.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="label label--level-1">
+  <span class="sub-label"> Trans Fat: ${data.totalFat.transFat}</span>
+  </div>
+  <span class="value"></span>
+</div>
+<div class="row">
+  <div class="label">Cholesterol:<span class="sub-label--space sub-label">${data.cholesterol.value}</span></div>
+  <span class="value">${data.cholesterol.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="label">Sodium:<span class="sub-label--space sub-label">${data.sodium.value}</span></div>
+  <span class="value">${data.sodium.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="label">Total Carbohydrate:<span class="sub-label--space sub-label">${data.totalCarbohydrate.value}</span></div>
+  <span class="value">${data.totalCarbohydrate.dailyValuePercent}</span>
+</div>
+<div class="row">
+<div class="label label--level-1">
+  <span class="sub-label"> Dietary Fiber: ${data.totalCarbohydrate.dietaryFiber.value}</span>
+  </div>
+  <span class="value">${data.totalCarbohydrate.dietaryFiber.dailyValuePercent}</span>
+</div>
+<div class="row">
+<div class="label label--level-1">
+  <span class="sub-label"> Total Sugars: ${data.totalCarbohydrate.totalSugars.value}</span>
+  </div>
+  <span class="value"></span>
+</div>
+<div class="row">
+<div class="label label--level-2">
+  <span class="sub-label"> Added Sugars: ${data.totalCarbohydrate.totalSugars.includedAddedSugars.value}</span>
+  </div>
+  <span class="value">${data.totalCarbohydrate.totalSugars.includedAddedSugars.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="label">Protein:<span class="sub-label--space sub-label">${data.protein.value}</span></div>
+  <span class="value">${data.protein.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="sub-label">Vitamin D: ${data.vitamins.vitaminD.value}</div>
+  <span class="value">${data.vitamins.vitaminD.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="sub-label">Calcium: ${data.vitamins.calcium.value}</div>
+  <span class="value">${data.vitamins.calcium.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="sub-label">Iron: ${data.vitamins.iron.value}</div>
+  <span class="value">${data.vitamins.iron.dailyValuePercent}</span>
+</div>
+<div class="row">
+  <div class="sub-label">Potassium: ${data.vitamins.potassium.value}</div>
+  <span class="value">${data.vitamins.potassium.dailyValuePercent}</span>
+</div>
+    `;
+    }
+
+    // Open modal
+    openModalBtn.forEach((btn) => {
+        btn.addEventListener('click', function () {
+            modal.setAttribute('aria-hidden', 'false');
+            populateNutritionalFacts(nutritionalData); // Populate modal with data
+        });
+    })
+
+    // Close modal
+    closeModalBtn.addEventListener('click', function () {
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    // Close modal when clicking outside the content
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  });
+</script>

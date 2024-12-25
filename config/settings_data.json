@@ -18,8 +18,8 @@
     "body_scale": 100,
     "page_width": 1600,
     "spacing_sections": 0,
-    "spacing_grid_horizontal": 8,
-    "spacing_grid_vertical": 8,
+    "spacing_grid_horizontal": 60,
+    "spacing_grid_vertical": 60,
     "buttons_border_thickness": 1,
     "buttons_border_opacity": 100,
     "buttons_radius": 40,
@@ -221,6 +221,20 @@
           "secondary_button_label": "#ff7700",
           "shadow": "#ee7623"
         }
+      },
+      "scheme-7": {
+        "settings": {
+          "background": "#ffffff",
+          "secondary_background": "#1759ac",
+          "tertiary_background": "#ff7700",
+          "background_gradient": "",
+          "text": "#1759ac",
+          "secondary_text": "#ff7700",
+          "button": "#1759ac",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#ee7623"
+        }
       }
     }
   },
@@ -248,8 +262,8 @@
       "body_scale": 100,
       "page_width": 1200,
       "spacing_sections": 0,
-      "spacing_grid_horizontal": 8,
-      "spacing_grid_vertical": 8,
+      "spacing_grid_horizontal": 60,
+      "spacing_grid_vertical": 60,
       "buttons_border_thickness": 1,
       "buttons_border_opacity": 100,
       "buttons_radius": 0,

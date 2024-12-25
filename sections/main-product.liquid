@@ -12,6 +12,7 @@
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  {{ 'component-nutritional.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
@@ -29,14 +30,22 @@
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
       padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-      background-image: url({{ section.settings.background_image | img_url: 'master' }});
       background-attachment: unset;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      {% if section.settings.background_image_mobile != blank %}
+        background-image: url({{ section.settings.background_image_mobile | img_url: 'master' }});
+        {%else%}
+        background-image: url({{ section.settings.background_image | img_url: 'master' }});
+      {%endif%}
     }
 
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
+        background-image: url({{ section.settings.background_image | img_url: 'master' }});
       }
     }
   {%- endstyle -%}
@@ -79,6 +88,17 @@
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-slider', variant_images: variant_images %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'nutritional' %}
+              {% assign color_scheme = block.settings.color_scheme %}
+              {% render 'nutritional',
+                color_scheme: color_scheme,
+                custom_class: 'hidden-mobile',
+                id: 'nutritional--1'
+              %}
+          {% endcase %}
+        {% endfor %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -742,6 +762,14 @@
                     show_pickup_availability: true
                   -%}
                 </div>
+
+              {% when 'nutritional' %}
+                {% assign color_scheme = block.settings.color_scheme %}
+                {% render 'nutritional',
+                  color_scheme: color_scheme,
+                  custom_class: 'hidden-desktop',
+                  id: 'nutritional--2'
+                %}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -815,6 +843,19 @@
     {
       "type": "custom_metafield",
       "name": "Custom Metafield"
+    },
+    {
+      "type": "nutritional",
+      "name": "Nutritional",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-1"
+        }
+      ]
     },
     {
       "type": "@app"
@@ -2214,6 +2255,11 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background image (mobile)"
     },
     {
       "type": "checkbox",
