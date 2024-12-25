@@ -1,0 +1,17 @@
+.icon-text {
+  display: flex;
+  flex-direction: row;
+  column-gap: 22px;
+  justify-content: center;
+}
+
+.icon-text p {
+  margin: 0;
+  align-items: center;
+  font-weight: 500;
+}
+
+.icon-text__richtext {
+  display: flex;
+  align-items: center;
+}

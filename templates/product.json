@@ -91,10 +91,21 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "icon_text_ReCk4C": {
+      "type": "icon-text",
+      "settings": {
+        "section_color_scheme": "scheme-2915cc0e-aafd-498e-ba44-fed8a5cf5770",
+        "richtext": "<p>We guarantee 100% satisfaction with every meal. If you’re not completely happy, we’ll offer you a full refund – no questions asked.</p>",
+        "icon": "shopify://shop_images/certificate.png",
+        "padding_top": 12,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
     "main",
-    "related-products"
+    "related-products",
+    "icon_text_ReCk4C"
   ]
 }
