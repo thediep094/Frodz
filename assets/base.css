@@ -268,6 +268,11 @@ h5,
   word-break: break-word;
 }
 
+.h28px {
+  font-size: clamp(calc(var(--font-heading-scale) * 2rem), 6vw, calc(var(--font-heading-scale) * 2.8rem));
+  line-height: 0.85;
+}
+
 .hxxl {
   font-size: clamp(calc(var(--font-heading-scale) * 5.6rem), 14vw, calc(var(--font-heading-scale) * 7.2rem));
   line-height: 0.85;

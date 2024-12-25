@@ -1,0 +1,202 @@
+{{ 'section-image-with-text-2.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  class="image-with-text-2  color-{{ section.settings.section_color_scheme }}"
+>
+  <div
+    class="image-with-text-2__media"
+    {% if section.settings.height == 'adapt' and section.settings.image != blank %}
+      style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+    {% endif %}
+  >
+    {% comment %}
+      Responsive image handling for mobile and desktop.
+    {% endcomment %}
+    {% if section.settings.image_mobile != blank %}
+      {%- capture mobile_image_url -%}
+  {{ section.settings.image_mobile | image_url: width: 3840 }}
+{%- endcapture -%}
+    {% endif %}
+
+    {%- capture desktop_image_url -%}
+{{ section.settings.image | image_url: width: 3840 }}
+{%- endcapture -%}
+
+    {% comment %}
+      Use a responsive <picture> element to handle mobile and desktop images gracefully.
+    {% endcomment %}
+    <picture>
+      {%- if section.settings.image_mobile != blank -%}
+        <source
+          srcset="{{ mobile_image_url }}"
+          media="(max-width: 749px)"
+        >
+      {%- endif -%}
+      <img
+        src="{{ desktop_image_url }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="image-with-text-2__media-img"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+        fetchpriority="{{ fetch_priority }}"
+      >
+    </picture>
+  </div>
+
+  <div class="page-width image-with-text-2__content section-{{ section.id }}-padding">
+    <div class="heading " style="max-width: {{ section.settings.max_width_heading }}rem;">
+      {% if section.settings.title != '' %}
+        <h2 class="heading__title heading__title--title-1 hxxxxl">
+          {{ section.settings.title }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.title_2 != '' %}
+        <h2 class="heading__title heading__title--title-2 h28px">
+          {{ section.settings.title_2 }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.title_3 != '' %}
+        <h2 class="heading__title heading__title--title-3 h1">
+          {{ section.settings.title_3 }}
+        </h2>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Image with text 2",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Show Line",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-with-text-2.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image Modile"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.multirow.settings.container_color_scheme.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "max_width_heading",
+      "min": 10,
+      "max": 100,
+      "unit": "rem",
+      "default": 50,
+      "step": 2,
+      "label": "Max Width Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "t:sections.collapsible_content.settings.heading_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.collapsible_content.settings.heading_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "default": "Default Title",
+      "label": "Title 2"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "default": "Default Title",
+      "label": "Title 3"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image with text 2"
+    }
+  ]
+}
+{% endschema %}
