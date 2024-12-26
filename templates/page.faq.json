@@ -131,10 +131,24 @@
         "padding_top": 100,
         "padding_bottom": 100
       }
+    },
+    "contact_section_NDqWHp": {
+      "type": "contact-section",
+      "settings": {
+        "section_color_scheme": "",
+        "image": "shopify://shop_images/Group_37900.png",
+        "title": "Our Call Centeris at Your Service!",
+        "button_text": "Contact Us",
+        "button_link": "shopify://pages/contact",
+        "button_type": "primary",
+        "padding_top": 80,
+        "padding_bottom": 100
+      }
     }
   },
   "order": [
     "main",
-    "collapsible_content_DmnzgY"
+    "collapsible_content_DmnzgY",
+    "contact_section_NDqWHp"
   ]
 }

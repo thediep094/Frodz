@@ -1,0 +1,121 @@
+{{ 'contact-section.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: 0px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="contact-section section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  <div class="page-width">
+    <div class="contact-section__content">
+      <div class="contact-section__content-img">
+        <img src="{{ section.settings.image|  image_url: width: 589 }}" alt="" width="auto" height="auto">
+      </div>
+      <div class="contact-section__content-info">
+        {{ 'icon-contact-service.svg' | inline_asset_content }}
+        <div class="contact-section__content-info-title hxxxl">{{ section.settings.title }}</div>
+        {% render 'button',
+          button_label: section.settings.button_text,
+          button_link: section.settings.button_link,
+          button_style: section.settings.button_type,
+          custom_class: 'contact-section__content-info-button'
+        %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Slider",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Button Text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "/",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_type",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary"
+        },
+        {
+          "label": "Tertiary",
+          "value": "tertiary"
+        }
+      ],
+      "default": "primary",
+      "label": "Button Type"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Contact section"
+    }
+  ]
+}
+{% endschema %}
