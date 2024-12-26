@@ -35,6 +35,15 @@
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
+    "social_facebook_link": "http://127.0.0.1:9292/",
+    "social_instagram_link": "http://127.0.0.1:9292/",
+    "social_youtube_link": "",
+    "social_tiktok_link": "http://127.0.0.1:9292/",
+    "social_twitter_link": "http://127.0.0.1:9292/",
+    "social_snapchat_link": "",
+    "social_pinterest_link": "",
+    "social_tumblr_link": "",
+    "social_vimeo_link": "",
     "variant_pills_border_thickness": 1,
     "variant_pills_border_opacity": 55,
     "variant_pills_radius": 40,
@@ -113,15 +122,6 @@
     "badge_corner_radius": 40,
     "sale_badge_color_scheme": "scheme-5",
     "sold_out_badge_color_scheme": "scheme-3",
-    "social_facebook_link": "",
-    "social_instagram_link": "",
-    "social_youtube_link": "",
-    "social_tiktok_link": "",
-    "social_twitter_link": "",
-    "social_snapchat_link": "",
-    "social_pinterest_link": "",
-    "social_tumblr_link": "",
-    "social_vimeo_link": "",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -233,6 +233,20 @@
           "button": "#1759ac",
           "button_label": "#ffffff",
           "secondary_button_label": "#ffffff",
+          "shadow": "#ee7623"
+        }
+      },
+      "footer": {
+        "settings": {
+          "background": "#ffffff",
+          "secondary_background": "#1759ac",
+          "tertiary_background": "#ff7700",
+          "background_gradient": "",
+          "text": "#000000",
+          "secondary_text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#1759ac",
+          "secondary_button_label": "#1759ac",
           "shadow": "#ee7623"
         }
       }
