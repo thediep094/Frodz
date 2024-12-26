@@ -15,9 +15,121 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "collapsible_content_DmnzgY": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_pgxN4V": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor advo?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor </p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_H8KFE3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed ?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed ?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_ERqYdN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur ?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur ?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_fhjW8Q": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor advo?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor advo?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_MG9CeH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_nFgexA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do ?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do ?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_7XwMdC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor advo?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor advo?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_b9Fdgb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do advo?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do advo?</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_tdimn3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do r advo?",
+            "icon": "none",
+            "row_content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do r advo?</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_pgxN4V",
+        "collapsible_row_H8KFE3",
+        "collapsible_row_ERqYdN",
+        "collapsible_row_fhjW8Q",
+        "collapsible_row_MG9CeH",
+        "collapsible_row_nFgexA",
+        "collapsible_row_7XwMdC",
+        "collapsible_row_b9Fdgb",
+        "collapsible_row_tdimn3"
+      ],
+      "settings": {
+        "caption": "These are the most frequently asked questions.If you have any question, please Contact Us.",
+        "heading": "FAQs",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme5",
+        "container_color_scheme": "scheme5",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "collapsible_content_DmnzgY"
   ]
 }
