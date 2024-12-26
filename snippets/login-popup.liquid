@@ -1,0 +1,199 @@
+<style>
+  .account-popup-container {
+    position: relative;
+  }
+
+  .account-popup {
+    position: fixed;
+    top: 94px;
+    right: 86px;
+    z-index: 1000;
+    background: rgb(var(--color-secondary-background));
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 325px;
+    padding: 28px 27px;
+  }
+
+  .account-popup.hidden {
+    display: none;
+  }
+
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popup-header {
+    width: 100%;
+  }
+
+  .btn-social {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .facebook-btn {
+    background: #4267b2;
+    color: white;
+  }
+
+  .gmail-btn {
+    background: #db4437;
+    color: white;
+  }
+
+  .popup-divider {
+    margin: 21px 0 15px;
+    text-align: center;
+    font-size: 12px;
+    color: #333333;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 17px 15px 14px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333333;
+  }
+
+  .popup-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(var(--color-button-text));
+    background-color: rgb(var(--color-button));
+    width: 100%;
+    border: none;
+    height: 48px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+</style>
+{% if customer %}
+  <a
+    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+    class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+  >
+    {%- if section.settings.enable_customer_avatar -%}
+      <account-icon>
+        {%- if customer and customer.has_avatar? -%}
+          {{ customer | avatar }}
+        {%- else -%}
+          <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+        {%- endif -%}
+      </account-icon>
+    {%- else -%}
+      {{ 'icon-account.svg' | inline_asset_content }}
+    {%- endif -%}
+    <span class="visually-hidden">
+      {%- liquid
+        if customer
+          echo 'customer.account_fallback' | t
+        else
+          echo 'customer.log_in' | t
+        endif
+      -%}
+    </span>
+  </a>
+{% else %}
+  <div class="account-popup-container">
+    <!-- Account Button -->
+    <button
+      id="account-button"
+      class="header__icon header__icon--account link focus-inset"
+      rel="nofollow"
+    >
+      <span class="svg-wrapper">{{ 'icon-account.svg' | inline_asset_content }}</span>
+      <span class="visually-hidden">
+        {%- if customer -%}
+          {{ 'customer.account_fallback' | t }}
+        {%- else -%}
+          {{ 'customer.log_in' | t }}
+        {%- endif -%}
+      </span>
+    </button>
+
+    <!-- Popup Modal -->
+    <div id="account-popup" class="account-popup hidden">
+      <div class="popup-content">
+        <button class="popup-close" id="popup-close-btn">&times;</button>
+        <div class="popup-header">
+          <a href="{{ routes.account_register_url }}" class="popup-btn">Register</a>
+        </div>
+        <div class="popup-divider">or</div>
+        {%- form 'customer_login', novalidate: 'novalidate' -%}
+          <input
+            type="email"
+            name="customer[email]"
+            id="CustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+            placeholder="{{ 'customer.login_page.email' | t }}"
+            class="input-field"
+            required
+          >
+          <input
+            type="password"
+            value=""
+            name="customer[password]"
+            id="CustomerPassword"
+            autocomplete="current-password"
+            {% if form.errors contains 'form' %}
+              aria-invalid="true"
+            {% endif %}
+            placeholder="{{ 'customer.login_page.password' | t }}"
+            class="input-field"
+            required
+          >
+          <button class="popup-btn">{{ 'customer.login_page.sign_in' | t }}</button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  document.getElementById('account-button').addEventListener('click', () => {
+    document.getElementById('account-popup').classList.remove('hidden');
+  });
+
+  document.getElementById('popup-close-btn').addEventListener('click', () => {
+    document.getElementById('account-popup').classList.add('hidden');
+  });
+</script>

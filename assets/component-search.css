@@ -1,6 +1,5 @@
 .search__input.field__input {
   padding-right: 9.8rem;
-  border-bottom: 1px solid rgb(var(--color-foreground));
   box-shadow: none;
 }
 
@@ -81,15 +80,16 @@ input::-webkit-search-decoration {
 
 .search-modal__content-bottom {
   position: relative;
+  padding-bottom: 27px;
 }
 
 .predictive-search-wrap-button {
   position: absolute;
-  top: 20%;
+  right: 68px;
   display: flex;
+  bottom: 27px;
   justify-content: flex-end;
   max-width: 74.2rem;
-  width: 100%;
 }
 
 .search-modal__form .field__label {

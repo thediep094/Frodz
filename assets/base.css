@@ -2639,12 +2639,12 @@ details[open] .modal-overlay::after {
   opacity: 0;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
   min-height: calc(100% + var(--inputs-margin-offset) + (2 * var(--inputs-border-width)));
-  height: 100vh;
+  height: 180px;
 }
 
 .search-modal__content {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   width: 100%;
   height: 100%;
@@ -3595,6 +3595,30 @@ details-disclosure > details {
   column-gap: 80px;
   row-gap: 10px;
   justify-content: center;
+}
+
+@media screen and (max-width: 1425px) {
+  .header__inline-menu--inline-custom {
+    column-gap: 60px;
+  }
+}
+
+@media screen and (max-width: 1284px) {
+  .header__inline-menu--inline-custom {
+    column-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  .header__inline-menu--inline-custom {
+    column-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 1062px) {
+  .header__inline-menu--inline-custom {
+    column-gap: 5px;
+  }
 }
 
 .content-for-layout {
