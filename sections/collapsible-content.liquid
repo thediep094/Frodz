@@ -20,20 +20,21 @@
     <div class="collapsible-content__wrapper section-{{ section.id }}-padding{% if section.settings.layout == 'section' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}">
       <div class="{% if section.settings.image == blank %}collapsible-content-wrapper-narrow{% else %}page-width{% endif %}">
         <div
-          class="collapsible-content__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          class="collapsible-content__header  scroll-trigger animate--slide-in "
           style="text-align: {{ section.settings.heading_alignment }};"
         >
-          {%- if section.settings.caption != blank -%}
-            <p class="caption-with-letter-spacing">
-              {{ section.settings.caption | escape }}
-            </p>
-          {% endif %}
           {%- if section.settings.heading != blank -%}
             <h2 class="collapsible-content__heading inline-richtext {{ section.settings.heading_size }}">
               {{ section.settings.heading }}
             </h2>
           {%- else -%}
             <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
+          {% endif %}
+
+          {%- if section.settings.caption != blank -%}
+            <div class="collapsible-content__description">
+              {{ section.settings.caption }}
+            </div>
           {% endif %}
         </div>
         <div class="grid grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' %} collapsible-content__grid--reverse{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -74,19 +75,21 @@
                 class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
                 {{ block.shopify_attributes }}
               >
-                <details
+                <div
+                  class="details"
                   id="Details-{{ block.id }}-{{ section.id }}"
                   {% if section.settings.open_first_collapsible_row and forloop.first %}
                     open
                   {% endif %}
                 >
-                  <summary id="Summary-{{ block.id }}-{{ section.id }}">
+                  <div class="summary" id="Summary-{{ block.id }}-{{ section.id }}">
                     {% render 'icon-accordion', icon: block.settings.icon %}
                     <h3 class="accordion__title inline-richtext h4">
                       {{ block.settings.heading | default: block.settings.page.title | escape }}
                     </h3>
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
-                  </summary>
+                    <div class="icon icon-accordion icon-minus-accordion">-</div>
+                    {{- 'icon-plus-accordion.svg' | inline_asset_content -}}
+                  </div>
                   <div
                     class="accordion__content rte"
                     id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
@@ -96,16 +99,56 @@
                     {{ block.settings.row_content }}
                     {{ block.settings.page.content }}
                   </div>
-                </details>
+                </div>
               </div>
             {%- endfor -%}
           </div>
         </div>
       </div>
+
+      <div class="collapsible-content__bottom">
+        <h2 class="collapsible-content__bottom--title">{{ section.settings.title_bottom }}</h2>
+
+        {% render 'button',
+          button_label: section.settings.button_text,
+          button_link: section.settings.button_link,
+          button_style: section.settings.button_type,
+          custom_class: 'collapsible-content__button'
+        %}
+      </div>
     </div>
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Select all accordion buttons
+    const accordions = document.querySelectorAll('.accordion .details');
+
+    accordions.forEach((accordion) => {
+      const summary = accordion.querySelector('.summary');
+      const content = accordion.querySelector('.accordion__content');
+
+      summary.addEventListener('click', function (event) {
+        // Prevent the default behavior of the summary click
+        event.preventDefault();
+
+        // Check if this accordion is already open
+        const isOpen = accordion.hasAttribute('open');
+
+        // Toggle the clicked accordion
+        if (isOpen) {
+          accordion.removeAttribute('open');
+          content.style.maxHeight = null; // Close the content
+        } else {
+          // Open the clicked accordion
+          accordion.setAttribute('open', '');
+          content.style.maxHeight = content.scrollHeight + 'px'; // Open the content
+        }
+      });
+    });
+  });
+</script>
 {% schema %}
 {
   "name": "t:sections.collapsible_content.name",
@@ -116,15 +159,53 @@
   },
   "settings": [
     {
-      "type": "text",
+      "type": "richtext",
       "id": "caption",
-      "label": "t:sections.collapsible_content.settings.caption.label"
+      "label": "Description"
     },
     {
       "type": "inline_richtext",
       "id": "heading",
       "label": "t:sections.collapsible_content.settings.heading.label",
       "default": "t:sections.collapsible_content.settings.heading.default"
+    },
+    {
+      "type": "text",
+      "id": "title_bottom",
+      "label": "Title Bottom",
+      "default": "Bottom Title"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Button Text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "/",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_type",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary"
+        },
+        {
+          "label": "Tertiary",
+          "value": "tertiary"
+        }
+      ],
+      "default": "primary",
+      "label": "Button Type"
     },
     {
       "type": "select",

@@ -48,7 +48,7 @@
   margin: 0 auto;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  max-width: 73.4rem;
+  max-width: 94rem;
 }
 
 .collapsible-content__header {
@@ -104,11 +104,6 @@
   background: rgba(var(--color-foreground), 0.04);
 }
 
-.collapsible-content summary:hover .accordion__title {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-}
-
 /* check for flexbox gap in older Safari versions */
 @supports not (inset: 10px) {
   @media screen and (min-width: 750px) {
@@ -125,4 +120,34 @@
       padding-left: 7rem;
     }
   }
+}
+
+.collapsible-content__description {
+  display: flex;
+  justify-content: center;
+}
+
+.collapsible-content__description p {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  margin: 16px 0 57px;
+  max-width: 587px;
+}
+
+.collapsible-content__description a {
+  color: rgb(var(--color-secondary-text));
+}
+
+.collapsible-content__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collapsible-content__bottom--title {
+  max-width: 514px;
+  margin-top: 100px;
+  margin-bottom: 37px;
+  text-align: center;
 }

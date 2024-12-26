@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "current": {
     "logo": "shopify://shop_images/Group_132.png",
     "logo_width": 70,
@@ -246,6 +246,20 @@
           "secondary_text": "#ffffff",
           "button": "#ffffff",
           "button_label": "#1759ac",
+          "secondary_button_label": "#1759ac",
+          "shadow": "#ee7623"
+        }
+      },
+      "scheme-8": {
+        "settings": {
+          "background": "#ffffff",
+          "secondary_background": "#1759ac",
+          "tertiary_background": "#ff7700",
+          "background_gradient": "",
+          "text": "#000000",
+          "secondary_text": "#ff7700",
+          "button": "#ff7700",
+          "button_label": "#ffffff",
           "secondary_button_label": "#1759ac",
           "shadow": "#ee7623"
         }
