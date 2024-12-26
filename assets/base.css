@@ -1622,7 +1622,6 @@ details[open] > .share-button__fallback {
 .customer select:after,
 .localization-form__select:after {
   pointer-events: none;
-  content: '';
   position: absolute;
   top: var(--inputs-border-width);
   right: var(--inputs-border-width);
@@ -1660,7 +1659,6 @@ details[open] > .share-button__fallback {
 .customer .field input:focus-visible,
 .customer select:focus-visible,
 .localization-form__select:focus-visible.localization-form__select:after {
-  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
   border-radius: var(--inputs-radius);
 }
@@ -1670,9 +1668,9 @@ details[open] > .share-button__fallback {
 .customer .field input:focus,
 .customer select:focus,
 .localization-form__select:focus.localization-form__select:after {
-  box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
   border-radius: var(--inputs-radius);
+  box-shadow: none;
 }
 
 .localization-form__select:focus {
@@ -1732,13 +1730,16 @@ details[open] > .share-button__fallback {
   padding: 1.5rem;
   margin: var(--inputs-border-width);
   transition: box-shadow var(--duration-short) ease;
+  background: linear-gradient(to right, #7fbaff, #4377db);
+  min-height: 67px;
 }
 
 .field__label,
 .customer .field label {
   font-size: 1.6rem;
   left: calc(var(--inputs-border-width) + 2rem);
-  top: calc(1rem + var(--inputs-border-width));
+  top: 50%;
+  transform: translateY(-50%);
   margin-bottom: 0;
   pointer-events: none;
   position: absolute;
@@ -1755,9 +1756,13 @@ details[open] > .share-button__fallback {
 .customer .field input:not(:placeholder-shown) ~ label,
 .customer .field input:-webkit-autofill ~ label {
   font-size: 1rem;
-  top: calc(var(--inputs-border-width) + 0.5rem);
+  top: calc(var(--inputs-border-width) + 2rem);
   left: calc(var(--inputs-border-width) + 2rem);
   letter-spacing: 0.04rem;
+}
+
+.text-area ~ .field__label {
+  top: 2.5rem;
 }
 
 .field__input:focus,
