@@ -1,6 +1,8 @@
 {{ 'section-featured-products.css' | asset_url | stylesheet_tag }}
 {{ 'component-card-product-custom.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
