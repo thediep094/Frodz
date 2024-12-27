@@ -32,10 +32,27 @@
         "padding_top": 100,
         "padding_bottom": 36
       }
+    },
+    "image_with_text_4_8kcbFQ": {
+      "type": "image-with-text-4",
+      "settings": {
+        "show_line": true,
+        "image": "shopify://shop_images/Group_37902_f25c906f-896f-4c69-8a8d-e2b75aa58007.png",
+        "bonus_image": "shopify://shop_images/actually.png",
+        "section_color_scheme": "scheme-c1e5e7cd-cfea-493d-8ae8-36b663c7d71c",
+        "color_scheme": "",
+        "max_width_heading": 50,
+        "heading_alignment": "center",
+        "title": "The Story of Frodz",
+        "title_2": "<p>In the face of the challenges of the COVID-19 pandemic in 2020, Frodz created a new scene in the world of food. Frodz challenged the idea that a long shelf life means sacrificing flavor and quality. The chaos of stocking essential supplies revealed a gap in the market and the need for long-lasting food that defies tradition.The result? A new vision for long-lasting, nutritious, and healthy ready-to-eat meals that break free from the norm, making gourmet food available whenever you desire.</p>",
+        "padding_top": 100,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "image_with_text_3_WVGy8i"
+    "image_with_text_3_WVGy8i",
+    "image_with_text_4_8kcbFQ"
   ]
 }

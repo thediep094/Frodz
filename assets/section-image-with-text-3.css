@@ -1,5 +1,5 @@
 .image-with-text-3__media-img {
-  margin-bottom: -10px;
+  margin-bottom: -11px;
   width: 100%;
   object-fit: cover;
   min-height: 70rem;
@@ -20,7 +20,7 @@
   min-height: 70rem;
   position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: -1px;
   right: 0;
   left: 0;
 }

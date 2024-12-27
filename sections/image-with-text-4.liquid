@@ -65,7 +65,29 @@
     {% endif %}
   </div>
 
-  <div class="image-with-text-4__content page-width section-{{ section.id }}-padding">
+  <div class="image-with-text-4__content padding section-{{ section.id }}-padding">
+    <div class="image-with-text-4__wrapper page-width">
+      <div class="image-with-text-4__heading heading ">
+        {% if section.settings.title != '' %}
+          <h2
+            class="heading__title heading__title--title-1 hxxxxl"
+            style="max-width: {{ section.settings.max_width_heading }}rem;"
+          >
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.title_2 != '' %}
+          <div
+            class="heading__title heading__title--title-2 h28px"
+            style="max-width: {{ section.settings.max_width_heading }}rem;"
+          >
+            {{ section.settings.title_2 }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
     <div class="image-with-text-4__content-img">
       {% if section.settings.bonus_image != blank %}
         <img
@@ -77,30 +99,11 @@
         >
       {% endif %}
     </div>
-    <div class="image-with-text-4__heading heading ">
-      {% if section.settings.title != '' %}
-        <h2
-          class="heading__title heading__title--title-1 hxxxxl"
-          style="max-width: {{ section.settings.max_width_heading }}rem;"
-        >
-          {{ section.settings.title }}
-        </h2>
-      {% endif %}
-
-      {% if section.settings.title_2 != '' %}
-        <h2
-          class="heading__title heading__title--title-2 h28px"
-          style="max-width: {{ section.settings.max_width_heading }}rem;"
-        >
-          {{ section.settings.title_2 }}
-        </h2>
-      {% endif %}
-    </div>
   </div>
 </div>
 {% schema %}
 {
-  "name": "Image with text 3",
+  "name": "Image with text 4",
   "class": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -180,7 +183,7 @@
       "label": "Title"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "title_2",
       "default": "Default Title",
       "label": "Description"
@@ -213,7 +216,7 @@
 
   "presets": [
     {
-      "name": "Image with text 3"
+      "name": "Image with text 4"
     }
   ]
 }
