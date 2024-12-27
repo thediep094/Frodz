@@ -49,8 +49,24 @@
   text-align: center;
 }
 
+.testimonials-1__media-img--desktop {
+  display: none;
+}
+
+.testimonials-1__media-img--mobile {
+  display: block;
+}
+
 @media screen and (min-width: 768px) {
   .testimonials__item-content {
     font-size: 16px;
+  }
+
+  .testimonials-1__media-img--desktop {
+    display: block;
+  }
+
+  .testimonials-1__media-img--mobile {
+    display: none;
   }
 }
