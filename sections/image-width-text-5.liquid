@@ -1,0 +1,157 @@
+{{ 'section-image-with-text-5.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+{%- capture desktop_image_url -%}
+    {{ section.settings.image | image_url: width: 3840 }}
+    {%- endcapture -%}
+
+<div
+  class="image-with-text-5 section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}"
+>
+  <div class="page-width image-with-text-5__content">
+    <div class="image-with-text-5__content-heading">
+      {% render 'heading',
+        title: section.settings.title,
+        max_width: section.settings.max_width_heading,
+        title_size: section.settings.title_size
+      -%}
+    </div>
+    <div class="image-with-text-5__content-img">
+      <img
+        src="{{ desktop_image_url }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="image-with-text-5__media-img {% if section.settings.image_mobile != blank %}image-with-text-5__media-img--desktop {% endif %}"
+        width="{{ section.settings.image.width }}"
+        height="auto"
+        fetchpriority="{{ fetch_priority }}"
+      >
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image with text 4",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image Desktop"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "max_width_heading",
+      "min": 10,
+      "max": 100,
+      "unit": "rem",
+      "default": 50,
+      "step": 2,
+      "label": "Max Width Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        },
+        {
+          "value": "hxxxl",
+          "label": "HXXXL"
+        },
+        {
+          "value": "hxxxxl",
+          "label": "HXXXXL"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 100
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image with text 5"
+    }
+  ]
+}
+{% endschema %}
