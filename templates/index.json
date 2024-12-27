@@ -60,9 +60,17 @@
         "slider_MLPFft"
       ],
       "settings": {
-        "section_color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "announcement_bar_custom_RHrr6j": {
+      "type": "announcement-bar-custom",
+      "settings": {
+        "section_color_scheme": "scheme-573fd58c-4b6f-4537-a6db-f4f8e6e3af45",
+        "title": "<p>USE CODE <strong>FRDZ01 </strong>AND GET <strong>10% OFF </strong>NOW</p>",
+        "padding_top": 4,
+        "padding_bottom": 4
       }
     },
     "box_build_kEAYmx": {
@@ -125,6 +133,7 @@
         "button_cFQpcR"
       ],
       "settings": {
+        "enable_overlay": false,
         "section_color_scheme": "scheme-20ca45ae-a12e-4da7-ba9f-27d9456adff0",
         "max_width_heading": 80,
         "heading_alignment": "center",
@@ -253,6 +262,7 @@
   },
   "order": [
     "featured_slider_t4GKbY",
+    "announcement_bar_custom_RHrr6j",
     "box_build_kEAYmx",
     "image_with_text_VQ6wEc",
     "featured_products_QrzykP",

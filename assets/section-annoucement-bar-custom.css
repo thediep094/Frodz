@@ -1,0 +1,22 @@
+.annoucement-bar-custom {
+  position: relative;
+}
+
+.annoucement-bar-custom__content {
+  display: flex;
+  justify-content: center;
+}
+
+.annoucement-bar-custom__content p {
+  margin: 0;
+  font-size: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .annoucement-bar-custom__content p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

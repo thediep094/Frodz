@@ -15,7 +15,9 @@
   }
 {%- endstyle -%}
 <div class="box-build section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
-  <div class="box-build-overlay"></div>
+  {% if section.settings.enable_overlay %}
+    <div class="box-build-overlay"></div>
+  {% endif %}
   {% render 'background-image', image: section.settings.image %}
   <div class="page-width box-build__content">
     <div class="box-build__content-heading">
@@ -66,6 +68,12 @@
 {
   "name": "Box Build",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "Enable Overlay",
+      "default": false
+    },
     {
       "type": "color_scheme",
       "id": "section_color_scheme",
