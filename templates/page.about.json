@@ -128,6 +128,66 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
+    },
+    "testimonials_2_4yXaeT": {
+      "type": "testimonials-2",
+      "blocks": {
+        "testimonial_UdUy43": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37863.png",
+            "name": "Time-Saving",
+            "description": "<p>Whether you’re busy with a hectic lifestyle or juggling numerous responsibilities, Frooz has your back. Preparing your daily meals has never been easier! With Frooz, you simply heat your meal for 7 minutes in the microwave, and it’s ready to enjoy. Say goodbye to meal prep hassle and hello to quick and convenient dining.</p>"
+          }
+        },
+        "testimonial_dnfexr": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37861.png",
+            "name": "Cost-Effective",
+            "description": "<p>Cooking your meals daily might seem like a budget-friendly option, but it often consumes a lot of time and involves high-quality ingredients. Frooz offers an affordable alternative without compromising on quality. With simple storage options, you can always have delicious, high-quality meals on hand whenever you need them—saving both time and money.</p>"
+          }
+        },
+        "testimonial_FCiraK": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/healthy-food.png",
+            "name": "Healthy Choices",
+            "description": "<p>Frooz meals are crafted using premium, locally sourced ingredients. We employ advanced cooking and preservation techniques to retain the highest nutritional value, ensuring you receive a wholesome and balanced meal every time. Additionally, detailed nutritional information is provided on each Frooz package, so you know exactly what you’re consuming.</p>"
+          }
+        },
+        "testimonial_cMrYe4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/convenient.png",
+            "name": "Convenient",
+            "description": "<p>Thanks to their long shelf life—up to 12 months in the freezer—Frooz meals are there for you whenever you need them. Whether it’s a quick snack, a post-workout meal, or an effortless option during busy workdays, Frooz fits seamlessly into your schedule. Just heat, serve, and enjoy.</p>"
+          }
+        },
+        "testimonial_UVT9r7": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/plate.png",
+            "name": "Delicious",
+            "description": "<p>All Frooz meals are prepared by experienced chefs who bring a world of culinary expertise and flavor to every bite. Whether you’re a foodie or someone looking for comfort and simplicity, Frooz meals deliver a delightful dining experience that satisfies all tastes. Just keep a selection of Frooz meals in your freezer, and you’ll always have something delicious on hand!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_UdUy43",
+        "testimonial_dnfexr",
+        "testimonial_FCiraK",
+        "testimonial_cMrYe4",
+        "testimonial_UVT9r7"
+      ],
+      "settings": {
+        "section_color_scheme": "",
+        "title": "Frodz Features",
+        "items_per_row": "5",
+        "items_per_row_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
     }
   },
   "order": [
@@ -135,6 +195,7 @@
     "image_with_text_3_WVGy8i",
     "image_with_text_4_8kcbFQ",
     "testimonials_1_XEGQeG",
-    "image_banner_gqU8LR"
+    "image_banner_gqU8LR",
+    "testimonials_2_4yXaeT"
   ]
 }

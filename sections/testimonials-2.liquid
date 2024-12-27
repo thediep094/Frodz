@@ -1,0 +1,247 @@
+{{ 'section-testimonials-2.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .section-{{ section.id }}-padding .testimonials-2__content{
+    grid-template-columns: repeat({{  section.settings.items_per_row_mobile }}, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    {% assign item_per_row_count = section.settings.items_per_row %}
+
+        {% if section.settings.items_per_row == '5' %}
+          {% assign item_per_row_count = '3' %}
+        {% elsif section.settings.items_per_row == '4' %}
+          {% assign item_per_row_count = '3' %}
+        {% endif %}
+
+        .section-{{ section.id }}-padding .testimonials-2__content{
+          grid-template-columns: repeat({{  item_per_row_count }}, minmax(0, 1fr));
+        }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .section-{{ section.id }}-padding .testimonials-2__content{
+    grid-template-columns: repeat({{  section.settings.items_per_row }}, minmax(0, 1fr));
+    }
+  }
+{%- endstyle -%}
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+<div class="testimonials-2 color-{{ section.settings.section_color_scheme }} section-{{ section.id }}-padding">
+  <div
+    class="testimonials-2__media"
+    {% if section.settings.height == 'adapt' and section.settings.image != blank %}
+      style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
+    {% endif %}
+  >
+    {% comment %}
+      Responsive image handling for mobile and desktop.
+    {% endcomment %}
+    {% if section.settings.image_mobile != blank %}
+      {%- capture mobile_image_url -%}
+  {{ section.settings.image_mobile | image_url: width: 3840 }}
+{%- endcapture -%}
+    {% endif %}
+
+    {%- capture desktop_image_url -%}
+{{ section.settings.image | image_url: width: 3840 }}
+{%- endcapture -%}
+
+    {% comment %}
+      Use a responsive <picture> element to handle mobile and desktop images gracefully.
+    {% endcomment %}
+    {% if section.settings.image != blank %}
+      <img
+        src="{{ desktop_image_url }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="testimonials-2__media-img {% if section.settings.image_mobile != blank %}testimonials-2__media-img--desktop {% endif %}"
+        width="{{ section.settings.image.width }}"
+        height="auto"
+        fetchpriority="{{ fetch_priority }}"
+      >
+    {% endif %}
+    {% if section.settings.image_mobile != blank %}
+      <img
+        src="{{ mobile_image_url }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        class="testimonials-2__media-img testimonials-2__media-img--mobile"
+        width="{{ section.settings.image_mobile.width }}"
+        height="auto"
+        fetchpriority="{{ fetch_priority }}"
+      >
+    {% endif %}
+  </div>
+
+  <div class="testimonials-2__content-heading  page-width">
+    <h2 class="title">{{ section.settings.title }}</h2>
+  </div>
+
+  <div class="testimonials-2__content page-width">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'testimonial' -%}
+          <div class="testimonials-2__item">
+            <div class="testimonials-2__item-image">
+              <img
+                src="{{ block.settings.image | image_url: width: 74  }}"
+                alt="{{ block.settings.name }}"
+                width="auto"
+                height="auto"
+              >
+            </div>
+            <div class="testimonials-2__item-content">
+              {{ block.settings.name }}
+            </div>
+            <div class="testimonials-2__item-description">
+              {{ block.settings.description }}
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials 2",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image Mobile"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Title"
+    },
+    {
+      "type": "select",
+      "id": "items_per_row",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        }
+      ],
+      "default": "5",
+      "label": "Items per row desktop"
+    },
+    {
+      "type": "select",
+      "id": "items_per_row_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2",
+      "label": "Items per row mobile"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 100
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Testimonials 2"
+    }
+  ]
+}
+{% endschema %}
