@@ -1,0 +1,112 @@
+{{ 'section-contact-socials.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="contact-socials section-{{ section.id }}-padding color-{{ section.settings.section_color_scheme }}">
+  <div class="page-width">
+    <div class="contact-socials__content">
+      <div class="contact-socials__content-info">
+        <div class="contact-socials__content-info-contact">
+          <div class="contact-socials__content-info-contact-item">
+            {{ 'icon-contact-phone.svg' | inline_asset_content }}
+            <div class="contact-socials__content-info-contact-item-text">{{ section.settings.phone }}</div>
+          </div>
+          <div class="contact-socials__content-info-contact-item">
+            {{ 'icon-contact-mail.svg' | inline_asset_content }}
+            <div class="contact-socials__content-info-contact-item-text">{{ section.settings.mail }}</div>
+          </div>
+          <div class="contact-socials__content-info-contact-item">
+            {{ 'icon-contact-location.svg' | inline_asset_content }}
+            <div class="contact-socials__content-info-contact-item-text">{{ section.settings.location }}</div>
+          </div>
+        </div>
+        <div class="contact-socitals__media">
+          <div class="contact-socials__content-info-title">
+            {{ section.settings.title }}
+          </div>
+          {% render 'social-icons' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact Socials",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Default Title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "mail",
+      "default": "example@gmail.com",
+      "label": "Mail"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "default": "+974 3001 2116",
+      "label": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "default": "Lorem Ipsum St, doler lane, Doha, Qatar",
+      "label": "Location"
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Contact Socials"
+    }
+  ]
+}
+{% endschema %}
