@@ -48,11 +48,74 @@
         "padding_top": 100,
         "padding_bottom": 36
       }
+    },
+    "testimonials_1_XEGQeG": {
+      "type": "testimonials-1",
+      "blocks": {
+        "testimonial_wrJDtb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37841.png",
+            "name": "Best Freezing Technology"
+          }
+        },
+        "testimonial_TwYm3L": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37840.png",
+            "name": "Special Plates"
+          }
+        },
+        "testimonial_wyR9JJ": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37839.png",
+            "name": "Vacumed Skin & Air Tight"
+          }
+        },
+        "testimonial_rqE3Hk": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37844.png",
+            "name": "Best Quality Cooking Equipment"
+          }
+        },
+        "testimonial_irE7fh": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37843.png",
+            "name": "Hand-Pick Our Ingredients"
+          }
+        },
+        "testimonial_FMk9hb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Group_37838.png",
+            "name": "Steam Heating Tech"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_wrJDtb",
+        "testimonial_TwYm3L",
+        "testimonial_wyR9JJ",
+        "testimonial_rqE3Hk",
+        "testimonial_irE7fh",
+        "testimonial_FMk9hb"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Group_37902_3ca9f339-d306-4106-8a65-b8034875ef60.png",
+        "section_color_scheme": "scheme-2915cc0e-aafd-498e-ba44-fed8a5cf5770",
+        "padding_top": 200,
+        "padding_bottom": 200,
+        "title":"The Quality"
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_3_WVGy8i",
-    "image_with_text_4_8kcbFQ"
+    "image_with_text_4_8kcbFQ",
+    "testimonials_1_XEGQeG"
   ]
 }
