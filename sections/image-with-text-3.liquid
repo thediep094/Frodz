@@ -1,4 +1,4 @@
-{{ 'section-image-with-text-2.css' | asset_url | stylesheet_tag }}
+{{ 'section-image-with-text-3.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -13,12 +13,18 @@
     }
   }
 {%- endstyle -%}
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
 
 <div
-  class="image-with-text-2  color-{{ section.settings.section_color_scheme }}"
+  class="image-with-text-3  color-{{ section.settings.section_color_scheme }}"
 >
   <div
-    class="image-with-text-2__media"
+    class="image-with-text-3__media"
     {% if section.settings.height == 'adapt' and section.settings.image != blank %}
       style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
     {% endif %}
@@ -39,41 +45,54 @@
     {% comment %}
       Use a responsive <picture> element to handle mobile and desktop images gracefully.
     {% endcomment %}
-    <picture>
-      {%- if section.settings.image_mobile != blank -%}
-        <source
-          srcset="{{ mobile_image_url }}"
-          media="(max-width: 749px)"
-        >
-      {%- endif -%}
+    <img
+      src="{{ desktop_image_url }}"
+      alt="{{ section.settings.image.alt | escape }}"
+      class="image-with-text-3__media-img {% if section.settings.image_mobile != blank %}image-with-text-3__media-img--desktop {% endif %}"
+      width="{{ section.settings.image.width }}"
+      height="auto"
+      fetchpriority="{{ fetch_priority }}"
+    >
+    {% if section.settings.image_mobile != blank %}
       <img
-        src="{{ desktop_image_url }}"
+        src="{{ mobile_image_url }}"
         alt="{{ section.settings.image.alt | escape }}"
-        class="image-with-text-2__media-img"
-        width="{{ section.settings.image.width }}"
-        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+        class="image-with-text-3__media-img image-with-text-3__media-img--mobile"
+        width="{{ section.settings.image_mobile.width }}"
+        height="auto"
         fetchpriority="{{ fetch_priority }}"
       >
-    </picture>
+    {% endif %}
   </div>
 
-  <div class="page-width image-with-text-2__content section-{{ section.id }}-padding">
-    <div class="heading " style="max-width: {{ section.settings.max_width_heading }}rem;">
+  <div class="image-with-text-3__content page-width section-{{ section.id }}-padding">
+    <div class="image-with-text-3__content-img">
+      {% if section.settings.bonus_image != blank %}
+        <img
+          src="{{ section.settings.bonus_image | img_url: '500x' }}"
+          alt="{{ section.settings.bonus_image.alt | escape }}"
+          width="auto"
+          height="auto"
+          class="image-with-text-3__content-img-img"
+        >
+      {% endif %}
+    </div>
+    <div class="image-with-text-3__heading heading ">
       {% if section.settings.title != '' %}
-        <h2 class="heading__title heading__title--title-1 hxxxxl">
+        <h2
+          class="heading__title heading__title--title-1 hxxxxl"
+          style="max-width: {{ section.settings.max_width_heading }}rem;"
+        >
           {{ section.settings.title }}
         </h2>
       {% endif %}
 
       {% if section.settings.title_2 != '' %}
-        <h2 class="heading__title heading__title--title-2 h28px">
+        <h2
+          class="heading__title heading__title--title-2 h28px"
+          style="max-width: {{ section.settings.max_width_heading }}rem;"
+        >
           {{ section.settings.title_2 }}
-        </h2>
-      {% endif %}
-
-      {% if section.settings.title_3 != '' %}
-        <h2 class="heading__title heading__title--title-3 h1">
-          {{ section.settings.title_3 }}
         </h2>
       {% endif %}
     </div>
@@ -81,7 +100,7 @@
 </div>
 {% schema %}
 {
-  "name": "Image with text 2",
+  "name": "Image with text 3",
   "class": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -102,6 +121,11 @@
       "type": "image_picker",
       "id": "image_mobile",
       "label": "Image Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "bonus_image",
+      "label": "Bonus Image"
     },
     {
       "type": "color_scheme",
@@ -159,13 +183,7 @@
       "type": "text",
       "id": "title_2",
       "default": "Default Title",
-      "label": "Title 2"
-    },
-    {
-      "type": "text",
-      "id": "title_3",
-      "default": "Default Title",
-      "label": "Title 3"
+      "label": "Description"
     },
     {
       "type": "header",
@@ -195,7 +213,7 @@
 
   "presets": [
     {
-      "name": "Image with text 2"
+      "name": "Image with text 3"
     }
   ]
 }
