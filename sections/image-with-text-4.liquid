@@ -1,4 +1,4 @@
-{{ 'section-image-with-text-3.css' | asset_url | stylesheet_tag }}
+{{ 'section-image-with-text-4.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -21,10 +21,10 @@
 -%}
 
 <div
-  class="image-with-text-3  color-{{ section.settings.section_color_scheme }}"
+  class="image-with-text-4  color-{{ section.settings.section_color_scheme }}"
 >
   <div
-    class="image-with-text-3__media"
+    class="image-with-text-4__media"
     {% if section.settings.height == 'adapt' and section.settings.image != blank %}
       style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
     {% endif %}
@@ -48,7 +48,7 @@
     <img
       src="{{ desktop_image_url }}"
       alt="{{ section.settings.image.alt | escape }}"
-      class="image-with-text-3__media-img {% if section.settings.image_mobile != blank %}image-with-text-3__media-img--desktop {% endif %}"
+      class="image-with-text-4__media-img {% if section.settings.image_mobile != blank %}image-with-text-4__media-img--desktop {% endif %}"
       width="{{ section.settings.image.width }}"
       height="auto"
       fetchpriority="{{ fetch_priority }}"
@@ -57,7 +57,7 @@
       <img
         src="{{ mobile_image_url }}"
         alt="{{ section.settings.image.alt | escape }}"
-        class="image-with-text-3__media-img image-with-text-3__media-img--mobile"
+        class="image-with-text-4__media-img image-with-text-4__media-img--mobile"
         width="{{ section.settings.image_mobile.width }}"
         height="auto"
         fetchpriority="{{ fetch_priority }}"
@@ -65,19 +65,19 @@
     {% endif %}
   </div>
 
-  <div class="image-with-text-3__content section-{{ section.id }}-padding">
-    <div class="image-with-text-3__content-img">
+  <div class="image-with-text-4__content page-width section-{{ section.id }}-padding">
+    <div class="image-with-text-4__content-img">
       {% if section.settings.bonus_image != blank %}
         <img
           src="{{ section.settings.bonus_image | img_url: '500x' }}"
           alt="{{ section.settings.bonus_image.alt | escape }}"
           width="auto"
           height="auto"
-          class="image-with-text-3__content-img-img"
+          class="image-with-text-4__content-img-img"
         >
       {% endif %}
     </div>
-    <div class="image-with-text-3__heading  page-width heading ">
+    <div class="image-with-text-4__heading heading ">
       {% if section.settings.title != '' %}
         <h2
           class="heading__title heading__title--title-1 hxxxxl"
