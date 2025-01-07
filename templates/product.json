@@ -7,11 +7,18 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
+        "startup_app_star_rating_RebUdn": {
+          "type": "shopify://apps/startup-app/blocks/star_rating/1e97a804-84f9-4376-883e-971bba28453e",
+          "settings": {
+            "product": "{{product}}",
+            "colour": "#ff0000"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -55,6 +62,7 @@
         }
       },
       "block_order": [
+        "startup_app_star_rating_RebUdn",
         "title",
         "custom_metafield_EH9Pz7",
         "nutritional_VjyR9n",
